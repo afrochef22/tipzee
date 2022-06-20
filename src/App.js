@@ -1,15 +1,14 @@
-import Header from './components/Header';
-import TipsForm from './components/TipForm';
-
+import React from "react";
+import Header from "./components/Header";
+import TipsForm from "./components/TipForm";
 
 function App() {
-  return (
-    <div>
-    <Header />
-    <TipsForm />
-    </div>
-   
-  );
+	return (
+		<React.Fragment>
+			<Header />
+			<TipsForm />
+		</React.Fragment>
+	);
 }
 
 export default App;
