@@ -13,12 +13,19 @@
 
 .row-content {
 	padding: 50px 0;
-	border-bottom: 1px ridge;
 	min-height: 200px;
 	width: 50%;
 	margin: auto;
 }
 
-.float {
-	float: left;
+.height100 {
+	height: 100vh;
+}
+
+.button-block {
+	min-width: 90%;
+	margin: 20px 0;
+}
+.btn-center {
+	text-align: center;
 }
