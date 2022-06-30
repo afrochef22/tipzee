@@ -2,19 +2,36 @@ import React, { Component } from "react";
 import Header from "./components/Header";
 import TipsForm from "./components/TipForm";
 
-class App extends Component {
-	constructor(props) {
-		super(props);
-	}
+const App = () => {
+	const tips = {
+		bartenderTips: [
+			{ bar1: "" },
+			{ bar2: "" },
+			{ bar3: "" },
+			{ bar4: "" },
+			{ bar5: "" },
+			{ bar6: "" },
+			{ bar7: "" },
+			{ bar8: "" },
+			{ bar9: "" },
+			{ bar10: "" },
+		],
+		totalTipsCollected: "",
+	};
 
-	render() {
+	const addTipsHandler = (tips) => {
+		console.log("form app.js");
+		console.log(tips);
+	};
+
+	{
 		return (
 			<React.Fragment>
 				<Header />
-				<TipsForm />
+				<TipsForm onAddTips={addTipsHandler} tips={tips} />
 			</React.Fragment>
 		);
 	}
-}
+};
 
 export default App;
