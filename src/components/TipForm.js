@@ -25,6 +25,8 @@ const TipsForm = (props) => {
 	const [bar9_Tips, setBar9_Tip] = useState("");
 	const [bar10_Tips, setBar10_Tip] = useState("");
 
+	const [sumTipTotal, setSumTipTotal] = useState("");
+
 	const bar1_TipHandler = (event) => {
 		setBar1_Tip(event.target.value);
 	};
@@ -62,14 +64,14 @@ const TipsForm = (props) => {
 		Number(bar3_Tips) +
 		Number(bar4_Tips) +
 		Number(bar5_Tips) +
-		Number(bar5_Tips) +
+		Number(bar6_Tips) +
 		Number(bar7_Tips) +
 		Number(bar8_Tips) +
 		Number(bar9_Tips) +
 		Number(bar10_Tips);
 
 	const submitHandler = () => {
-		props.onAddTips(tipSum);
+		setSumTipTotal(tipSum);
 	};
 
 	return (
@@ -172,10 +174,10 @@ const TipsForm = (props) => {
 
 					<Col sm={8}>
 						<Input
-							value={props.tips.totalTipsCollected}
 							id="tipTotal"
 							name="tipTotal"
 							for="text"
+							value={sumTipTotal}
 						/>
 					</Col>
 				</FormGroup>
