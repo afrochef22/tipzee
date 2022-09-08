@@ -32,16 +32,23 @@ const App = () => {
 			{ bar: 0 },
 		],
 	};
+
 	const [totalTipsCollected, setTotalTipsCollected] = useState(0);
+	console.log(totalTipsCollected);
 	const submitHandler = (inputedTips) => {
-		enteredTips.totalTipsCollected = inputedTips;
+		console.log(inputedTips);
+		setTotalTipsCollected(inputedTips);
 	};
 
 	{
 		return (
 			<React.Fragment>
 				<Header />
-				<TipsForm tips={enteredTips} totalTips={submitHandler} />
+				{totalTipsCollected < 1 ? (
+					<TipsForm tips={enteredTips} totalTips={submitHandler} />
+				) : (
+					<h1>{totalTipsCollected}</h1>
+				)}
 			</React.Fragment>
 		);
 	}
