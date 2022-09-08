@@ -7,39 +7,41 @@ const App = () => {
 		totalTipsCollected: 0,
 		totalTipsAfterBarbackTipOut: 0,
 		barBackTips: 0,
+		bartenderPosition: [
+			{ bar: "Bartender 1 Tips" },
+			{ bar: "Bartender 2 Tips" },
+			{ bar: "Bartender 3 Tips" },
+			{ bar: "Bartender 4 Tips" },
+			{ bar: "Bartender 5 Tips" },
+			{ bar: "Bartender 6 Tips" },
+			{ bar: "Bartender 7 Tips" },
+			{ bar: "Bartender 8 Tips" },
+			{ bar: "Bartender 9 Tips" },
+			{ bar: "Bartender 10 Tips" },
+		],
 		bartenderTips: [
-			{ bar1: 0 },
-			{ bar2: 0 },
-			{ bar3: 0 },
-			{ bar4: 0 },
-			{ bar5: 0 },
-			{ bar6: 0 },
-			{ bar7: 0 },
-			{ bar8: 0 },
-			{ bar9: 0 },
-			{ bar10: 0 },
+			{ bar: 0 },
+			{ bar: 0 },
+			{ bar: 0 },
+			{ bar: 0 },
+			{ bar: 0 },
+			{ bar: 0 },
+			{ bar: 0 },
+			{ bar: 0 },
+			{ bar: 0 },
+			{ bar: 0 },
 		],
 	};
-
+	const [totalTipsCollected, setTotalTipsCollected] = useState(0);
 	const submitHandler = (inputedTips) => {
-		console.log(inputedTips);
 		enteredTips.totalTipsCollected = inputedTips;
-	};
-
-	const addTipsHandler = (enteredTips) => {
-		console.log("form app.js");
-		console.log(enteredTips);
 	};
 
 	{
 		return (
 			<React.Fragment>
 				<Header />
-				<TipsForm
-					onAddTips={addTipsHandler}
-					tips={enteredTips}
-					totalTips={submitHandler}
-				/>
+				<TipsForm tips={enteredTips} totalTips={submitHandler} />
 			</React.Fragment>
 		);
 	}

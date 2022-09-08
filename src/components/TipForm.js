@@ -5,78 +5,49 @@ import "../index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const TipsForm = (props) => {
-	const [numberOfBartnders, setNumberOfBartenders] = useState(0);
+	const [numberOfBartenders, setNumberOfBartenders] = useState(0);
+	const [totalTipsCollected, setTotalTipsCollected] = useState(0);
 
 	const numberOfBartendersHandler = (e) => {
-		console.log(e);
-		setNumberOfBartenders(e);
+		setNumberOfBartenders(e.target.value);
 	};
 
-	const [bar1_Tips, setBar1_Tip] = useState("");
-	const [bar2_Tips, setBar2_Tip] = useState("");
-	const [bar3_Tips, setBar3_Tip] = useState("");
-	const [bar4_Tips, setBar4_Tip] = useState("");
-	const [bar5_Tips, setBar5_Tip] = useState("");
-	const [bar6_Tips, setBar6_Tip] = useState("");
-	const [bar7_Tips, setBar7_Tip] = useState("");
-	const [bar8_Tips, setBar8_Tip] = useState("");
-	const [bar9_Tips, setBar9_Tip] = useState("");
-	const [bar10_Tips, setBar10_Tip] = useState("");
-
-	const bar1_TipHandler = (event) => {
-		setBar1_Tip(event.target.value);
-	};
-	const bar2_TipHandler = (event) => {
-		setBar2_Tip(event.target.value);
-	};
-	const bar3_TipHandler = (event) => {
-		setBar3_Tip(event.target.value);
-	};
-	const bar4_TipHandler = (event) => {
-		setBar4_Tip(event.target.value);
-	};
-	const bar5_TipHandler = (event) => {
-		setBar5_Tip(event.target.value);
-	};
-	const bar6_TipHandler = (event) => {
-		setBar6_Tip(event.target.value);
-	};
-	const bar7_TipHandler = (event) => {
-		setBar7_Tip(event.target.value);
-	};
-	const bar8_TipHandler = (event) => {
-		setBar8_Tip(event.target.value);
-	};
-	const bar9_TipHandler = (event) => {
-		setBar9_Tip(event.target.value);
-	};
-	const bar10_TipHandler = (event) => {
-		setBar10_Tip(event.target.value);
+	const backBtnHandler = (e) => {
+		setNumberOfBartenders(0);
+		setTotalTipsCollected(0);
 	};
 
-	const tipSum =
-		Number(bar1_Tips) +
-		Number(bar2_Tips) +
-		Number(bar3_Tips) +
-		Number(bar4_Tips) +
-		Number(bar5_Tips) +
-		Number(bar6_Tips) +
-		Number(bar7_Tips) +
-		Number(bar8_Tips) +
-		Number(bar9_Tips) +
-		Number(bar10_Tips);
+	const barTips = props.tips.bartenderTips;
 
-	const submitHandler = () => {
-		props.totalTips(tipSum);
+	const submitHandler = (e) => {
+		e.preventDefault();
+		const list = barTips.map((post) => post.bar);
+		const sum = list.reduce((x, y) => x + y);
+		setTotalTipsCollected(sum);
+		props.totalTips(sum);
+	};
+	const tipsArray = [];
+	const barTipHandler = (e) => {
+		let value = e.target.value;
+		for (let i = -1; i < e.target.id; i++) {
+			if ((i = e.target.id)) {
+				props.tips.bartenderTips[i].bar = Number(value);
+			}
+		}
 	};
 
 	return (
 		<div className="bg1 height100">
-			{numberOfBartnders === 0 ? (
-				<Form className="row-content">
+			{numberOfBartenders < 1 ? (
+				<Form className="row-content" onSubmit={submitHandler}>
 					<FormGroup sm={4}>
 						<Label for="exampleSelect">How many bartenders?</Label>
-						<Input id="exampleSelect" name="select" type="select">
+						<Input
+							id="exampleSelect"
+							name="select"
+							type="select"
+							onChange={numberOfBartendersHandler}
+						>
 							<option>0</option>
 							<option>1</option>
 							<option>2</option>
@@ -90,50 +61,58 @@ const TipsForm = (props) => {
 							<option>10</option>
 						</Input>
 					</FormGroup>
-					<Button onClick={numberOfBartendersHandler}>Submit</Button>
 				</Form>
 			) : (
 				<Form className="row-content">
-					<FormGroup row>
-						<Label htmlFor="bar1Tips" sm={4}>
-							Bartender 1 Tips
-						</Label>
+					{props.tips.bartenderPosition
+						.slice(0, numberOfBartenders)
+						.map((bartender, i) => (
+							<FormGroup row key={i}>
+								<Label sm={4}>{bartender.bar}</Label>
 
+								<Col sm={8}>
+									<Input
+										id={i}
+										name="bar1TipTotal"
+										type="number"
+										onChange={barTipHandler}
+									/>
+								</Col>
+							</FormGroup>
+						))}
+
+					<FormGroup row>
+						<Label sm={4}>Tips Collected</Label>
 						<Col sm={8}>
 							<Input
-								id="bar1Tips"
-								name="bar1TipTotal"
-								type="number"
-								onChange={bar1_TipHandler}
-							/>
-						</Col>
-					</FormGroup>
-
-					<FormGroup row>
-						<Label htmlFor="bar2Tips" sm={4}>
-							Bartender 2 Tips
-						</Label>
-
-						<Col sm={8}>
-							<Input
-								id="bar2Tips"
-								name="bar2TipTotal"
-								type="number"
-								onChange={bar2_TipHandler}
+								value={totalTipsCollected}
+								id="tipTotal"
+								name="tipTotal"
+								readOnly
 							/>
 						</Col>
 					</FormGroup>
 
 					<FormGroup>
-						<Col className="btn-center">
+						<div m={8} className="btn-center">
+							<Button
+								sm="true"
+								onClick={backBtnHandler}
+								className="button-block bg2"
+								size="lg"
+								type="submit"
+							>
+								Back
+							</Button>
 							<Button
 								onClick={submitHandler}
 								className="button-block bg2"
 								size="lg"
+								type="submit"
 							>
 								Submit
 							</Button>
-						</Col>
+						</div>
 					</FormGroup>
 				</Form>
 			)}
