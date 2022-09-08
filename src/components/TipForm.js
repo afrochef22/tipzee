@@ -24,7 +24,7 @@ const TipsForm = (props) => {
 		const list = barTips.map((post) => post.bar);
 		const sum = list.reduce((x, y) => x + y);
 		setTotalTipsCollected(sum);
-		props.totalTips(sum);
+		props.totalTips(sum, numberOfBartenders);
 	};
 	const tipsArray = [];
 	const barTipHandler = (e) => {

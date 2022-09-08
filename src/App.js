@@ -1,6 +1,7 @@
 import React, { Component, useState } from "react";
 import Header from "./components/Header";
 import TipsForm from "./components/TipForm";
+import TipBreakDown from "./components/TipBreakDown";
 
 const App = () => {
 	const enteredTips = {
@@ -35,19 +36,33 @@ const App = () => {
 
 	const [totalTipsCollected, setTotalTipsCollected] = useState(0);
 	console.log(totalTipsCollected);
-	const submitHandler = (inputedTips) => {
+
+	const [numberOfBartenders, setNumberOfBartenders] = useState(0);
+	console.log(numberOfBartenders);
+
+	const submitHandler = (inputedTips, numOfBartenders) => {
 		console.log(inputedTips);
 		setTotalTipsCollected(inputedTips);
+		setNumberOfBartenders(numOfBartenders);
 	};
 
 	{
 		return (
 			<React.Fragment>
-				<Header />
 				{totalTipsCollected < 1 ? (
-					<TipsForm tips={enteredTips} totalTips={submitHandler} />
+					<div>
+						<Header />
+						<TipsForm tips={enteredTips} totalTips={submitHandler} />
+					</div>
 				) : (
-					<h1>{totalTipsCollected}</h1>
+					<div>
+						<Header />
+						<TipBreakDown
+							tips={enteredTips}
+							totalTips={totalTipsCollected}
+							bartenders={numberOfBartenders}
+						/>
+					</div>
 				)}
 			</React.Fragment>
 		);
