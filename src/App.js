@@ -32,6 +32,7 @@ const App = () => {
 			{ bar: 0 },
 			{ bar: 0 },
 		],
+		bartenders: ["Michelle Rogers", "Erik Zinkel", "David Perricone", "Rachel Van der Pol", "Michael Martin", "Kristin Lorenz", "Hayley Pond", "Jose Verde", "Ashanti Rogers", "Andre Jalalian" ]
 	};
 
 	const [totalTipsCollected, setTotalTipsCollected] = useState(0);
