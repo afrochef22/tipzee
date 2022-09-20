@@ -4,6 +4,12 @@
 	margin-top: 1000px;
 }
 
+.card-container {
+	width: 50%;
+	margin: auto;
+	border-radius: 50px;
+}
+
 .border {
 	background-color: #6285b6;
 	/* width: 50%; */

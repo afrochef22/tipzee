@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Col, FormGroup, Input, Label, Button } from "reactstrap";
+import { Form, Col, FormGroup, Input, Label, Button, Card } from "reactstrap";
 import "./TipForm.css";
 import "../index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -63,58 +63,58 @@ const TipsForm = (props) => {
 					</FormGroup>
 				</Form>
 			) : (
-				<Form className="row-content">
-					{props.tips.bartenderPosition
-						.slice(0, numberOfBartenders)
-						.map((bartender, i) => (
-							<FormGroup row key={i}>
-								<Label sm={4}>{bartender.bar}</Label>
+				<Card body className="card-container">
+					<Form className="row-content">
+						{props.tips.bartenderPosition
+							.slice(0, numberOfBartenders)
+							.map((bartender, i) => (
+								<FormGroup row key={i}>
+									<Label sm={4}>{bartender.bar}</Label>
+									<Col sm={8}>
+										<Input
+											id={i}
+											name="bar1TipTotal"
+											type="number"
+											onChange={barTipHandler}
+										/>
+									</Col>
+								</FormGroup>
+							))}
+						<FormGroup row>
+							<Label sm={4}>Tips Collected</Label>
+							<Col sm={8}>
+								<Input
+									value={totalTipsCollected}
+									id="tipTotal"
+									name="tipTotal"
+									readOnly
+								/>
+							</Col>
+						</FormGroup>
 
-								<Col sm={8}>
-									<Input
-										id={i}
-										name="bar1TipTotal"
-										type="number"
-										onChange={barTipHandler}
-									/>
-								</Col>
-							</FormGroup>
-						))}
-
-					<FormGroup row>
-						<Label sm={4}>Tips Collected</Label>
-						<Col sm={8}>
-							<Input
-								value={totalTipsCollected}
-								id="tipTotal"
-								name="tipTotal"
-								readOnly
-							/>
-						</Col>
-					</FormGroup>
-
-					<FormGroup>
-						<div m={8} className="btn-center">
-							<Button
-								sm="true"
-								onClick={backBtnHandler}
-								className="button-block bg2"
-								size="lg"
-								type="submit"
-							>
-								Back
-							</Button>
-							<Button
-								onClick={submitHandler}
-								className="button-block bg2"
-								size="lg"
-								type="submit"
-							>
-								Submit
-							</Button>
-						</div>
-					</FormGroup>
-				</Form>
+						<FormGroup>
+							<div m={8} className="btn-center">
+								<Button
+									sm="true"
+									onClick={backBtnHandler}
+									className="button-block bg2"
+									size="lg"
+									type="submit"
+								>
+									Back
+								</Button>
+								<Button
+									onClick={submitHandler}
+									className="button-block bg2"
+									size="lg"
+									type="submit"
+								>
+									Submit
+								</Button>
+							</div>
+						</FormGroup>
+					</Form>
+				</Card>
 			)}
 		</div>
 	);

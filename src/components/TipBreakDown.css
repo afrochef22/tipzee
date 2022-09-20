@@ -1,0 +1,32 @@
+.container {
+	width: 500px;
+
+	margin-top: 1000px;
+}
+
+.border {
+	background-color: #6285b6;
+	/* width: 50%; */
+	margin: 20px auto;
+	border-radius: 5px;
+}
+
+.row-content {
+	padding: 50px 0;
+	min-height: 200px;
+	width: 50%;
+	margin: auto;
+	text-align: center;
+}
+
+.height100 {
+	height: 100vh;
+}
+
+.button-block {
+	min-width: 90%;
+	margin: 20px 0;
+}
+.btn-center {
+	text-align: center;
+}
