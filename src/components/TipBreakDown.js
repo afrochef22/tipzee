@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Form, Col, FormGroup, Input, Label, Button } from "reactstrap";
+import { Card, Form, Col, FormGroup, Input, Label, Button } from "reactstrap";
 import "./TipBreakDown.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -15,17 +15,20 @@ const TipBreakDown = (props) => {
 
 	return (
 		<div className="bg1 height100">
-			<div className="row-content">
+			<Card className="row-content card-container">
 				<div>
 					<h1>Total Tips Collected</h1>
-					<p>{props.totalTips}</p>
+					<h2>{props.totalTips}</h2>
 				</div>
 				<div>
-					<h1>BarBack Tips</h1>
-					<p>{barbackTips}</p>
+					<h3>BarBack Tips</h3>
+					<FormGroup row>
+						<Label sm={4}>BarBack</Label>
+						<Col sm={8}>{barbackTips}</Col>
+					</FormGroup>
 				</div>
 				<div>
-					<h1>Bartender Tips</h1>
+					<h3>Bartender Tips</h3>
 					{props.tips.bartenderPosition
 						.slice(0, props.bartenders)
 						.map((bartender, i) => (
@@ -35,7 +38,7 @@ const TipBreakDown = (props) => {
 							</FormGroup>
 						))}
 				</div>
-			</div>
+			</Card>
 		</div>
 	);
 };

@@ -12,7 +12,6 @@
 }
 
 .row-content {
-	padding: 50px 0;
 	min-height: 200px;
 	width: 50%;
 	margin: auto;
@@ -29,4 +28,11 @@
 }
 .btn-center {
 	text-align: center;
+}
+
+.card-container {
+	width: 50%;
+	margin: auto;
+	border-radius: 10px;
+	margin-top: 50px;
 }

@@ -8,6 +8,7 @@
 	width: 50%;
 	margin: auto;
 	border-radius: 50px;
+	margin-top: 50px;
 }
 
 .border {
@@ -18,7 +19,6 @@
 }
 
 .row-content {
-	padding: 50px 0;
 	min-height: 200px;
 	width: 50%;
 	margin: auto;

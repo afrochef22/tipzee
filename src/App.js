@@ -2,6 +2,7 @@ import React, { Component, useState } from "react";
 import Header from "./components/Header";
 import TipsForm from "./components/TipForm";
 import TipBreakDown from "./components/TipBreakDown";
+import "./index.css";
 
 const App = () => {
 	const enteredTips = {
@@ -32,7 +33,18 @@ const App = () => {
 			{ bar: 0 },
 			{ bar: 0 },
 		],
-		bartenders: ["Michelle Rogers", "Erik Zinkel", "David Perricone", "Rachel Van der Pol", "Michael Martin", "Kristin Lorenz", "Hayley Pond", "Jose Verde", "Ashanti Rogers", "Andre Jalalian" ]
+		bartenders: [
+			"Michelle Rogers",
+			"Erik Zinkel",
+			"David Perricone",
+			"Rachel Van der Pol",
+			"Michael Martin",
+			"Kristin Lorenz",
+			"Hayley Pond",
+			"Jose Verde",
+			"Ashanti Rogers",
+			"Andre Jalalian",
+		],
 	};
 
 	const [totalTipsCollected, setTotalTipsCollected] = useState(0);
@@ -51,12 +63,12 @@ const App = () => {
 		return (
 			<React.Fragment>
 				{totalTipsCollected < 1 ? (
-					<div>
+					<div className="bg1">
 						<Header />
 						<TipsForm tips={enteredTips} totalTips={submitHandler} />
 					</div>
 				) : (
-					<div>
+					<div className="bg1">
 						<Header />
 						<TipBreakDown
 							tips={enteredTips}
