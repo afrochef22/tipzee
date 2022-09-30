@@ -73,6 +73,24 @@ const TipsForm = (props) => {
 								.slice(0, numberOfBartenders)
 								.map((bartender, i) => (
 									<FormGroup row key={i}>
+									<Input
+										id={i}
+										name="select"
+										type="select"
+										onChange={""}
+									>asagb
+										<option>{bartender.bar}</option>
+										<option>{bartender.bar}</option>
+										<option>2</option>
+										<option>3</option>
+										<option>4</option>
+										<option>5</option>
+										<option>6</option>
+										<option>7</option>
+										<option>8</option>
+										<option>9</option>
+										<option>10</option>
+									</Input>
 										<Label sm={4}>{bartender.bar}</Label>
 										<Col sm={8}>
 											<Input
@@ -84,17 +102,7 @@ const TipsForm = (props) => {
 										</Col>
 									</FormGroup>
 								))}
-							<FormGroup row>
-								<Label sm={4}>Tips Collected</Label>
-								<Col sm={8}>
-									<Input
-										value={totalTipsCollected}
-										id="tipTotal"
-										name="tipTotal"
-										readOnly
-									/>
-								</Col>
-							</FormGroup>
+							
 							<FormGroup>
 								<div m={8} className="btn-center">
 									<Button
