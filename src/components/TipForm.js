@@ -42,7 +42,11 @@ const TipsForm = (props) => {
 				<Card className="card-container">
 					<Form className="row-content card-container" onSubmit={submitHandler}>
 						<FormGroup sm={4}>
-							<h2 for="exampleSelect">How many bartenders?</h2>
+							<h2 for="exampleSelect">Add Bartender?</h2>
+
+							
+									
+								
 							<Input
 								id="exampleSelect"
 								name="select"
@@ -61,6 +65,16 @@ const TipsForm = (props) => {
 								<option>9</option>
 								<option>10</option>
 							</Input>
+
+							<Input
+									id=""
+									type="select"
+									>
+									{props.tips.bartenderPosition
+								.map((bartender, i) => (
+									<option>{bartender.bar}</option>
+									))}
+									</Input>
 						</FormGroup>
 					</Form>
 				</Card>
@@ -73,24 +87,7 @@ const TipsForm = (props) => {
 								.slice(0, numberOfBartenders)
 								.map((bartender, i) => (
 									<FormGroup row key={i}>
-									<Input
-										id={i}
-										name="select"
-										type="select"
-										onChange={""}
-									>asagb
-										<option>{bartender.bar}</option>
-										<option>{bartender.bar}</option>
-										<option>2</option>
-										<option>3</option>
-										<option>4</option>
-										<option>5</option>
-										<option>6</option>
-										<option>7</option>
-										<option>8</option>
-										<option>9</option>
-										<option>10</option>
-									</Input>
+									
 										<Label sm={4}>{bartender.bar}</Label>
 										<Col sm={8}>
 											<Input

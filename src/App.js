@@ -10,6 +10,7 @@ const App = () => {
 		totalTipsAfterBarbackTipOut: 0,
 		barBackTips: 0,
 		bartenderPosition: [
+			{ bar: "None" },
 			{ bar: "Ashanti Rogers" },
 			{ bar: "Michelle Rogers" },
 			{ bar: "David Perricone" },
