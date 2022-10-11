@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Form, Col, FormGroup, Input, Label, Button, Card } from "reactstrap";
+import CurrentDate from "./CurrentDate";
 import "./TipForm.css";
 import "../index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -40,13 +41,11 @@ const TipsForm = (props) => {
 		<div className="bg1 height100">
 			{numberOfBartenders < 1 ? (
 				<Card className="card-container">
+					<CurrentDate />
 					<Form className="row-content card-container" onSubmit={submitHandler}>
 						<FormGroup sm={4}>
 							<h2 for="exampleSelect">Add Bartender?</h2>
 
-							
-									
-								
 							<Input
 								id="exampleSelect"
 								name="select"
@@ -66,15 +65,11 @@ const TipsForm = (props) => {
 								<option>10</option>
 							</Input>
 
-							<Input
-									id=""
-									type="select"
-									>
-									{props.tips.bartenderPosition
-								.map((bartender, i) => (
+							<Input id="" type="select">
+								{props.tips.bartenderPosition.map((bartender, i) => (
 									<option>{bartender.bar}</option>
-									))}
-									</Input>
+								))}
+							</Input>
 						</FormGroup>
 					</Form>
 				</Card>
@@ -87,7 +82,6 @@ const TipsForm = (props) => {
 								.slice(0, numberOfBartenders)
 								.map((bartender, i) => (
 									<FormGroup row key={i}>
-									
 										<Label sm={4}>{bartender.bar}</Label>
 										<Col sm={8}>
 											<Input
@@ -99,7 +93,7 @@ const TipsForm = (props) => {
 										</Col>
 									</FormGroup>
 								))}
-							
+
 							<FormGroup>
 								<div m={8} className="btn-center">
 									<Button

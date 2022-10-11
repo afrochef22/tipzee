@@ -1,8 +1,8 @@
 import React, { Component, useState } from "react";
+import "./index.css";
 import Header from "./components/Header";
 import TipsForm from "./components/TipForm";
 import TipBreakDown from "./components/TipBreakDown";
-import "./index.css";
 
 const App = () => {
 	const enteredTips = {
@@ -60,27 +60,25 @@ const App = () => {
 		setNumberOfBartenders(numOfBartenders);
 	};
 
-	{
-		return (
-			<React.Fragment>
-				{totalTipsCollected < 1 ? (
-					<div className="bg1">
-						<Header />
-						<TipsForm tips={enteredTips} totalTips={submitHandler} />
-					</div>
-				) : (
-					<div className="bg1">
-						<Header />
-						<TipBreakDown
-							tips={enteredTips}
-							totalTips={totalTipsCollected}
-							bartenders={numberOfBartenders}
-						/>
-					</div>
-				)}
-			</React.Fragment>
-		);
-	}
+	return (
+		<React.Fragment>
+			{totalTipsCollected < 1 ? (
+				<div className="bg1">
+					<Header />
+					<TipsForm tips={enteredTips} totalTips={submitHandler} />
+				</div>
+			) : (
+				<div className="bg1">
+					<Header />
+					<TipBreakDown
+						tips={enteredTips}
+						totalTips={totalTipsCollected}
+						bartenders={numberOfBartenders}
+					/>
+				</div>
+			)}
+		</React.Fragment>
+	);
 };
 // test
 export default App;
