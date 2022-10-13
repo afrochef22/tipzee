@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Form, Col, FormGroup, Input, Label, Button, Card } from "reactstrap";
-import CurrentDate from "./CurrentDate";
+import CurrentShift from "./CurrentShift";
 import "./TipForm.css";
 import "../index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -41,7 +41,7 @@ const TipsForm = (props) => {
 		<div className="bg1 height100">
 			{numberOfBartenders < 1 ? (
 				<Card className="card-container">
-					<CurrentDate />
+					<CurrentShift />
 					<Form className="row-content card-container" onSubmit={submitHandler}>
 						<FormGroup sm={4}>
 							<h2 for="exampleSelect">Add Bartender?</h2>
