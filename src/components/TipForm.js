@@ -1,5 +1,14 @@
 import React, { useState } from "react";
-import { Form, Col, FormGroup, Input, Label, Button, Card } from "reactstrap";
+import {
+	Form,
+	Col,
+	FormGroup,
+	Input,
+	Label,
+	Button,
+	Card,
+	InputGroup,
+} from "reactstrap";
 import CurrentShift from "./CurrentShift";
 import "./TipForm.css";
 import "../index.css";
@@ -36,15 +45,64 @@ const TipsForm = (props) => {
 			}
 		}
 	};
+	const [selected, setSelected] = useState("");
+	const addWorkingBartender = (e) => {
+		props.newWorkingBartender(e.target.value);
+	};
+
+	const removeHandler = (e) => {
+		const inputVal = document.getElementById(e.target.value).value;
+		props.removeWorkingBartender(inputVal);
+		console.log(inputVal);
+	};
 
 	return (
 		<div className="bg1 height100">
+			<Card className="card-container">
+				<CurrentShift />
+				<Form>
+					<FormGroup className="row-content card-container">
+						<h2 htmlFor="exampleSelect">Who is bartending?</h2>
+						{props.workingBartender.map((bartender, i) => (
+							<InputGroup key={i} onSubmit={removeHandler}>
+								<Input readOnly defaultValue={bartender} id={i} />
+								<Button value={i} onClick={removeHandler}>
+									Remove
+								</Button>
+							</InputGroup>
+						))}
+						<Input
+							id=""
+							type="select"
+							value={selected}
+							placeholder="Select a bartender"
+							onChange={addWorkingBartender}
+						>
+							{props.tips.bartenders
+								.filter(
+									(bartender) =>
+										!props.workingBartender.includes(bartender.value)
+								)
+								.map((bartender, i) => (
+									<option
+										disabled={bartender.disabled}
+										key={bartender.value}
+										value={bartender.value}
+									>
+										{bartender.text}
+									</option>
+								))}
+						</Input>
+					</FormGroup>
+				</Form>
+			</Card>
+
 			{numberOfBartenders < 1 ? (
 				<Card className="card-container">
 					<CurrentShift />
 					<Form className="row-content card-container" onSubmit={submitHandler}>
 						<FormGroup sm={4}>
-							<h2 for="exampleSelect">Add Bartender?</h2>
+							<h2 htmlFor="exampleSelect">Add Bartender?</h2>
 
 							<Input
 								id="exampleSelect"
@@ -63,12 +121,6 @@ const TipsForm = (props) => {
 								<option>8</option>
 								<option>9</option>
 								<option>10</option>
-							</Input>
-
-							<Input id="" type="select">
-								{props.tips.bartenderPosition.map((bartender, i) => (
-									<option>{bartender.bar}</option>
-								))}
 							</Input>
 						</FormGroup>
 					</Form>
