@@ -64,17 +64,26 @@ const App = () => {
 	};
 
 	const addWorkingBartenderHandler = (bartender) => {
-		// enteredTips.workingBartenders.push(bartender);
+		// console.log("before filter", bartender, newWorkingBartenders);
 		setWorkingBartender([...newWorkingBartenders, bartender]);
+		// console.log("after filter", "(newWorkingBartender)", newWorkingBartenders);
 	};
 
+	// console.log("outside", newWorkingBartenders);
+
 	const removeWorkingBartender = (employee) => {
-		console.log("app", employee, newWorkingBartenders);
-		const newList = newWorkingBartenders.filter((bartender) =>
-			bartender.includes(employee)
+		// console.log("before filter", employee, newWorkingBartenders);
+		const newList = newWorkingBartenders.filter(
+			(bartender) => !bartender.includes(employee)
 		);
-		setWorkingBartender([newList]);
-		console.log(newWorkingBartenders, newList);
+		setWorkingBartender([...newList]);
+		// console.log(
+		// 	"after filter",
+		// 	"(newWorkingBartender)",
+		// 	newWorkingBartenders,
+		// 	"(newList)",
+		// 	newList
+		// );
 	};
 
 	return (

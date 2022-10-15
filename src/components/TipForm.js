@@ -51,9 +51,9 @@ const TipsForm = (props) => {
 	};
 
 	const removeHandler = (e) => {
+		e.preventDefault();
 		const inputVal = document.getElementById(e.target.value).value;
 		props.removeWorkingBartender(inputVal);
-		console.log(inputVal);
 	};
 
 	return (
@@ -64,9 +64,13 @@ const TipsForm = (props) => {
 					<FormGroup className="row-content card-container">
 						<h2 htmlFor="exampleSelect">Who is bartending?</h2>
 						{props.workingBartender.map((bartender, i) => (
-							<InputGroup key={i} onSubmit={removeHandler}>
-								<Input readOnly defaultValue={bartender} id={i} />
-								<Button value={i} onClick={removeHandler}>
+							<InputGroup key={bartender} onSubmit={removeHandler}>
+								<Input readOnly defaultValue={bartender} id={bartender} />
+								<Button
+									color="danger"
+									value={bartender}
+									onClick={removeHandler}
+								>
 									Remove
 								</Button>
 							</InputGroup>
@@ -95,6 +99,9 @@ const TipsForm = (props) => {
 						</Input>
 					</FormGroup>
 				</Form>
+				<Button className="button-block bg2" size="lg" type="submit">
+					Button
+				</Button>
 			</Card>
 
 			{numberOfBartenders < 1 ? (
