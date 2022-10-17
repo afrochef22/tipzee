@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
 import "./index.css";
 import Header from "./components/Header";
 import TipsForm from "./components/TipForm";
@@ -6,48 +6,23 @@ import TipBreakDown from "./components/TipBreakDown";
 
 const App = () => {
 	const enteredTips = {
-		totalTipsCollected: 0,
-		totalTipsAfterBarbackTipOut: 0,
-		barBackTips: 0,
-		bartenderPosition: [
-			{ bar: "Ashanti Rogers" },
-			{ bar: "Michelle Rogers" },
-			{ bar: "David Perricone" },
-			{ bar: "Hayley Pond" },
-			{ bar: "Jose Verde" },
-			{ bar: "Kristin Lorenz" },
-			{ bar: "Michael Martin" },
-			{ bar: "Rachel Van Der Pol" },
-			{ bar: "Andre Jalaian" },
-			{ bar: "Erik Zinkel" },
-		],
-		bartenderTips: [
-			{ bar: 0 },
-			{ bar: 0 },
-			{ bar: 0 },
-			{ bar: 0 },
-			{ bar: 0 },
-			{ bar: 0 },
-			{ bar: 0 },
-			{ bar: 0 },
-			{ bar: 0 },
-			{ bar: 0 },
-		],
 		bartenders: [
 			{ value: "", text: "Select Bartender", disabled: true },
-			{ value: "Ashanti Rogers", text: "Ashanti Rogers" },
-			{ value: "Michelle Rogers", text: "Michelle Rogers" },
-			{ value: "David Perricone", text: "David Perricone" },
-			{ value: "Hayley Pond", text: "Hayley Pond" },
-			{ value: "Jose Verde", text: "Jose Verde" },
-			{ value: "Kristin Lorenz", text: "Kristin Lorenz" },
-			{ value: "Michael Martin", text: "Micheal Martin" },
-			{ value: "Rachel Van Der Pol", text: "Rachel Van Der Pol" },
-			{ value: "Andre Jalaian", text: "Andre Jalaian" },
-			{ value: "Erik Zinkel", text: "Erik Zinkel" },
+			{ value: "Ashanti Rogers", text: "Ashanti Rogers", tipsCollected: 0 },
+			{ value: "Michelle Rogers", text: "Michelle Rogers", tipsCollected: 0 },
+			{ value: "David Perricone", text: "David Perricone", tipsCollected: 0 },
+			{ value: "Hayley Pond", text: "Hayley Pond", tipsCollected: 0 },
+			{ value: "Jose Verde", text: "Jose Verde", tipsCollected: 0 },
+			{ value: "Kristin Lorenz", text: "Kristin Lorenz", tipsCollected: 0 },
+			{ value: "Michael Martin", text: "Micheal Martin", tipsCollected: 0 },
+			{
+				value: "Rachel Van Der Pol",
+				text: "Rachel Van Der Pol",
+				tipsCollected: 0,
+			},
+			{ value: "Andre Jalaian", text: "Andre Jalaian", tipsCollected: 0 },
+			{ value: "Erik Zinkel", text: "Erik Zinkel", tipsCollected: 0 },
 		],
-
-		workingBartenders: [],
 	};
 
 	const [totalTipsCollected, setTotalTipsCollected] = useState(0);

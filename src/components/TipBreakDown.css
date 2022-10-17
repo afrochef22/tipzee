@@ -6,13 +6,12 @@
 
 .border {
 	background-color: #6285b6;
-	/* width: 50%; */
 	margin: 20px auto;
 	border-radius: 5px;
 }
 
 .row-content {
-	min-height: 200px;
+	min-height: 80px;
 	width: 90%;
 	margin: auto;
 	text-align: center;

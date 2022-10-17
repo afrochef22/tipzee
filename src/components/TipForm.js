@@ -23,11 +23,13 @@ const TipsForm = (props) => {
 		setTotalTipsCollected(0);
 	};
 
-	const barTips = props.tips.bartenderTips;
+	const bartendersInfo = props.tips.bartenders.filter((bartender) => {
+		return bartender.tipsCollected >= 0;
+	});
 
 	const submitHandler = (e) => {
 		e.preventDefault();
-		const list = barTips.map((post) => post.bar);
+		const list = bartendersInfo.map((post) => post.tipsCollected);
 		const sum = list.reduce((x, y) => x + y);
 		setTotalTipsCollected(sum);
 		props.totalTips(sum, props.bartenders);
@@ -39,11 +41,13 @@ const TipsForm = (props) => {
 
 	const barTipHandler = (e) => {
 		let value = e.target.value;
+		let id = e.target.id;
 		for (let i = -1; i < e.target.id; i++) {
 			if ((i = e.target.id)) {
-				props.tips.bartenderTips[i].bar = Number(value);
+				props.tips.bartenders[id].tipsCollected = Number(value);
 			}
 		}
+		console.log(bartendersInfo);
 	};
 	const [selected, setSelected] = useState("");
 	const addWorkingBartender = (e) => {
@@ -123,7 +127,9 @@ const TipsForm = (props) => {
 									<Label sm={4}>{bartender}</Label>
 									<Col sm={8}>
 										<Input
-											id={i}
+											id={props.tips.bartenders.findIndex(
+												(index) => index.value === bartender
+											)}
 											name="bar1TipTotal"
 											type="number"
 											onChange={barTipHandler}

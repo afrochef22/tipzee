@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Card, Form, Col, FormGroup, Input, Label, Button } from "reactstrap";
+import { Card, Col, FormGroup, Label } from "reactstrap";
 import "./TipBreakDown.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
