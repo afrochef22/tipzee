@@ -29,8 +29,8 @@
 }
 
 .button-block {
-	min-width: 90%;
-	margin: 20px 0;
+	width: 100px;
+	margin: 5px;
 }
 
 .submit-bartender-btn {

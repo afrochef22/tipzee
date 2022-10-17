@@ -133,9 +133,9 @@ const TipsForm = (props) => {
 							))}
 
 							<FormGroup>
-								<div m={8} className="btn-center">
+								<div m={8}>
 									<Button
-										sm="true"
+										// sm="true"
 										onClick={backBtnHandler}
 										className="button-block bg2"
 										size="lg"

@@ -27,14 +27,12 @@ const TipBreakDown = (props) => {
 				</div>
 				<div>
 					<h3>Bartender Tips</h3>
-					{props.workingBartenders
-						// .slice(0, props.bartenders)
-						.map((bartender, i) => (
-							<FormGroup row key={i}>
-								<Label sm={4}>{bartender}</Label>
-								<Col sm={8}>{tipsPerBartender}</Col>
-							</FormGroup>
-						))}
+					{props.workingBartenders.map((bartender, i) => (
+						<FormGroup row key={i}>
+							<Label sm={4}>{bartender}</Label>
+							<Col sm={8}>{tipsPerBartender}</Col>
+						</FormGroup>
+					))}
 				</div>
 			</Card>
 		</div>
