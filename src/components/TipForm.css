@@ -32,6 +32,14 @@
 	min-width: 90%;
 	margin: 20px 0;
 }
+
+.submit-bartender-btn {
+	margin: 5% 25% 10% 25%;
+}
 .btn-center {
 	text-align: center;
+}
+
+.select-bartender {
+	margin: 10px 0;
 }

@@ -10,7 +10,6 @@ const App = () => {
 		totalTipsAfterBarbackTipOut: 0,
 		barBackTips: 0,
 		bartenderPosition: [
-			{ bar: "None" },
 			{ bar: "Ashanti Rogers" },
 			{ bar: "Michelle Rogers" },
 			{ bar: "David Perricone" },
@@ -57,33 +56,27 @@ const App = () => {
 
 	const [newWorkingBartenders, setWorkingBartender] = useState([]);
 
+	const [isSubmited, setIsSubmited] = useState(false);
+
 	const submitHandler = (inputedTips, numOfBartenders, totalTips) => {
-		console.log(inputedTips);
 		setTotalTipsCollected(inputedTips);
 		setNumberOfBartenders(numOfBartenders);
 	};
 
 	const addWorkingBartenderHandler = (bartender) => {
-		// console.log("before filter", bartender, newWorkingBartenders);
 		setWorkingBartender([...newWorkingBartenders, bartender]);
-		// console.log("after filter", "(newWorkingBartender)", newWorkingBartenders);
+		setNumberOfBartenders(newWorkingBartenders.length + 1);
 	};
 
-	// console.log("outside", newWorkingBartenders);
-
 	const removeWorkingBartender = (employee) => {
-		// console.log("before filter", employee, newWorkingBartenders);
 		const newList = newWorkingBartenders.filter(
 			(bartender) => !bartender.includes(employee)
 		);
 		setWorkingBartender([...newList]);
-		// console.log(
-		// 	"after filter",
-		// 	"(newWorkingBartender)",
-		// 	newWorkingBartenders,
-		// 	"(newList)",
-		// 	newList
-		// );
+	};
+
+	const isSubmitedHandler = (submit) => {
+		setIsSubmited(submit);
 	};
 
 	return (
@@ -97,6 +90,9 @@ const App = () => {
 						removeWorkingBartender={removeWorkingBartender}
 						totalTips={submitHandler}
 						newWorkingBartender={addWorkingBartenderHandler}
+						isSubmited={isSubmited}
+						isSubmitedHandler={isSubmitedHandler}
+						bartenders={numberOfBartenders}
 					/>
 				</div>
 			) : (
@@ -106,6 +102,7 @@ const App = () => {
 						tips={enteredTips}
 						totalTips={totalTipsCollected}
 						bartenders={numberOfBartenders}
+						workingBartenders={newWorkingBartenders}
 					/>
 				</div>
 			)}
