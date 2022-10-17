@@ -28,33 +28,6 @@ function DayOfTheWeek(day) {
 	return day;
 }
 
-function CurrentShift() {
-	return (
-		<div className="center">
-			<div>{ShiftDate()}</div>
-			{/* <div>
-				{hour < 6 ? (
-					<div>
-						<h1>{DayOfTheWeek(yesterday)}</h1>
-						<h2>
-							{`${
-								month < 10 ? `0${month}` : `${month}`
-							}/${yesterdayDate}/${year}`}
-						</h2>
-					</div>
-				) : (
-					<div>
-						<h1>{DayOfTheWeek(day)}</h1>
-						<h2>
-							{`${month < 10 ? `0${month}` : `${month}`}/${date}/${year}`}
-						</h2>
-					</div>
-				)}
-			</div> */}
-		</div>
-	);
-}
-
 function CurrentDate() {
 	const newDate = new Date();
 	const date = newDate.getDate();
@@ -72,7 +45,6 @@ function CurrentDate() {
 		newDate.getMinutes() < 10
 			? `0${newDate.getMinutes()}`
 			: newDate.getMinutes();
-	const time = hour + ":" + min;
 
 	const dateData = {
 		date,
@@ -92,7 +64,7 @@ function CurrentDate() {
 function ShiftDate(dateData) {
 	dateData = CurrentDate();
 	switch (true) {
-		case dateData.hour < 7:
+		case dateData.hour < 5:
 			dateData = `${
 				dateData.month < 10 ? `0${dateData.month}` : `${dateData.month}`
 			}/${dateData.yesterdayDate}/${dateData.year}`;
@@ -104,6 +76,27 @@ function ShiftDate(dateData) {
 			}/${dateData.date}/${dateData.year}`;
 	}
 	return dateData;
+}
+
+function ShiftDay(dateData) {
+	dateData = CurrentDate();
+	switch (true) {
+		case dateData.hour < 5:
+			dateData = DayOfTheWeek(dateData.yesterday);
+			break;
+		default:
+			dateData = DayOfTheWeek(dateData.day);
+	}
+	return dateData;
+}
+
+function CurrentShift() {
+	return (
+		<div className="center">
+			<h1>{ShiftDay()}</h1>
+			<h3>{ShiftDate()}</h3>
+		</div>
+	);
 }
 
 export default CurrentShift;

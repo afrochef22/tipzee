@@ -135,7 +135,6 @@ const TipsForm = (props) => {
 							<FormGroup>
 								<div m={8}>
 									<Button
-										// sm="true"
 										onClick={backBtnHandler}
 										className="button-block bg2"
 										size="lg"
@@ -149,7 +148,7 @@ const TipsForm = (props) => {
 										size="lg"
 										type="submit"
 									>
-										Submit
+										Calculate Tips
 									</Button>
 								</div>
 							</FormGroup>
