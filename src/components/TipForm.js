@@ -10,6 +10,7 @@ import {
 	InputGroup,
 } from "reactstrap";
 import CurrentShift from "./CurrentShift";
+import BarBack from "./Barback";
 import "./TipForm.css";
 import "../index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -67,6 +68,10 @@ const TipsForm = (props) => {
 					<CurrentShift />
 					<Form>
 						<FormGroup className="row-content card-container">
+							<BarBack tips={props.tips}  workingBarBack={props.workingBarBack} newWorkingBarBack = {props.newWorkingBarBack}
+							removeWorkingBarBack={props.removeWorkingBarBack}/>
+							
+							
 							<h2 htmlFor="exampleSelect">Who is bartending?</h2>
 							{props.workingBartender.map((bartender, i) => (
 								<InputGroup

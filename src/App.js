@@ -23,13 +23,24 @@ const App = () => {
 			{ value: "Andre Jalaian", text: "Andre Jalaian", tipsCollected: 0 },
 			{ value: "Erik Zinkel", text: "Erik Zinkel", tipsCollected: 0 },
 		],
+
+		barBacks: [
+			{value: "", text: "Select Bar-back", disabled: true},
+			{value: "Carlos Cardenas", text: "Carlos Cardenas"},
+			{value: "Jose Verde", text:"Jose Verde"},
+			{value: "Ashanti Rogers", text: "Ashanti Rogers"}
+		]
 	};
 
 	const [totalTipsCollected, setTotalTipsCollected] = useState(0);
 
 	const [numberOfBartenders, setNumberOfBartenders] = useState(0);
 
+	const [numberOfBarBacks, setNumberOfBarBacks] = useState(0);
+
 	const [newWorkingBartenders, setWorkingBartender] = useState([]);
+
+	const [workingBarBack, setWorkingBarBack] = useState([])
 
 	const [isSubmited, setIsSubmited] = useState(false);
 
@@ -50,6 +61,19 @@ const App = () => {
 		setWorkingBartender([...newList]);
 	};
 
+	const addWorkingBarBackHandler = (barBack) => {
+		setWorkingBarBack([...workingBarBack, barBack])
+		setNumberOfBarBacks(workingBarBack.length + 1)
+	}
+
+	const removeWorkingBarBack = (employee) => {
+		const newList = workingBarBack.filter(
+			(barBack) => !barBack.includes(employee)
+		);
+		setWorkingBarBack([...newList]);
+	};
+
+
 	const isSubmitedHandler = (submit) => {
 		setIsSubmited(submit);
 	};
@@ -68,6 +92,9 @@ const App = () => {
 						isSubmited={isSubmited}
 						isSubmitedHandler={isSubmitedHandler}
 						bartenders={numberOfBartenders}
+						workingBarBack={workingBarBack}
+						newWorkingBarBack={addWorkingBarBackHandler}
+						removeWorkingBarBack={removeWorkingBarBack}
 					/>
 				</div>
 			) : (
