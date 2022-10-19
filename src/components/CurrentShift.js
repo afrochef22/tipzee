@@ -60,7 +60,7 @@ function CurrentDate() {
 function ShiftDate(dateData) {
 	dateData = CurrentDate();
 	switch (true) {
-		case dateData.hour < 5:
+		case dateData.hour < 6:
 			dateData = `${
 				dateData.month < 10 ? `0${dateData.month}` : `${dateData.month}`
 			}/${dateData.yesterdayDate}/${dateData.year}`;
@@ -77,7 +77,7 @@ function ShiftDate(dateData) {
 function ShiftDay(dateData) {
 	dateData = CurrentDate();
 	switch (true) {
-		case dateData.hour < 5:
+		case dateData.hour < 6:
 			dateData = DayOfTheWeek(dateData.yesterday);
 			break;
 		default:
