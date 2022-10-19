@@ -11,6 +11,7 @@ import {
 } from "reactstrap";
 import CurrentShift from "./CurrentShift";
 import BarBack from "./Barback";
+import Cook from "./Cook";
 import "./TipForm.css";
 import "../index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -68,10 +69,23 @@ const TipsForm = (props) => {
 					<CurrentShift />
 					<Form>
 						<FormGroup className="row-content card-container">
-							<BarBack tips={props.tips}  workingBarBack={props.workingBarBack} newWorkingBarBack = {props.newWorkingBarBack}
-							removeWorkingBarBack={props.removeWorkingBarBack}/>
-							
-							
+							<Cook
+								tips={props.tips}
+								workingCook={props.workingCook}
+								newWorkingCook={props.newWorkingCook}
+								removeWorkingCook={props.removeWorkingCook}
+								workingBartender={props.workingBartender}
+								workingBarBack={props.workingBarBack}
+							/>
+							<BarBack
+								tips={props.tips}
+								workingBarBack={props.workingBarBack}
+								newWorkingBarBack={props.newWorkingBarBack}
+								removeWorkingBarBack={props.removeWorkingBarBack}
+								workingBartender={props.workingBartender}
+								workingCook={props.workingCook}
+							/>
+
 							<h2 htmlFor="exampleSelect">Who is bartending?</h2>
 							{props.workingBartender.map((bartender, i) => (
 								<InputGroup
@@ -97,6 +111,10 @@ const TipsForm = (props) => {
 								onChange={addWorkingBartender}
 							>
 								{props.tips.bartenders
+									.filter((cook) => !props.workingCook.includes(cook.value))
+									.filter(
+										(barBack) => !props.workingBarBack.includes(barBack.value)
+									)
 									.filter(
 										(bartender) =>
 											!props.workingBartender.includes(bartender.value)

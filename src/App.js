@@ -22,14 +22,24 @@ const App = () => {
 			},
 			{ value: "Andre Jalaian", text: "Andre Jalaian", tipsCollected: 0 },
 			{ value: "Erik Zinkel", text: "Erik Zinkel", tipsCollected: 0 },
+			{ value: "Aaron Montaigne", text: "Aaron Montaigne", tipsCollected: 0 },
+			{ value: "Charlie Miller", text: "Charlie Miller", tipsCollected: 0 },
+			{ value: "Tony Crouse", text: "Tony Crouse", tipsCollected: 0 },
 		],
 
 		barBacks: [
-			{value: "", text: "Select Bar-back", disabled: true},
-			{value: "Carlos Cardenas", text: "Carlos Cardenas"},
-			{value: "Jose Verde", text:"Jose Verde"},
-			{value: "Ashanti Rogers", text: "Ashanti Rogers"}
-		]
+			{ value: "", text: "Select Bar-back", disabled: true },
+			{ value: "Carlos Cardenas", text: "Carlos Cardenas" },
+			{ value: "Jose Verde", text: "Jose Verde" },
+			{ value: "Ashanti Rogers", text: "Ashanti Rogers" },
+		],
+
+		cooks: [
+			{ value: "", text: "Select Cook", disabled: true },
+			{ value: "Francisco Cardenas", text: "Francisco Cardenas" },
+			{ value: "Chuey", text: "Chuey" },
+			{ value: "Ashanti Rogers", text: "Ashanti Rogers" },
+		],
 	};
 
 	const [totalTipsCollected, setTotalTipsCollected] = useState(0);
@@ -38,9 +48,13 @@ const App = () => {
 
 	const [numberOfBarBacks, setNumberOfBarBacks] = useState(0);
 
+	const [numberOfCooks, setNumberOfCooks] = useState(0);
+
 	const [newWorkingBartenders, setWorkingBartender] = useState([]);
 
-	const [workingBarBack, setWorkingBarBack] = useState([])
+	const [workingBarBack, setWorkingBarBack] = useState([]);
+
+	const [workingCook, setWorkingCook] = useState([]);
 
 	const [isSubmited, setIsSubmited] = useState(false);
 
@@ -62,9 +76,9 @@ const App = () => {
 	};
 
 	const addWorkingBarBackHandler = (barBack) => {
-		setWorkingBarBack([...workingBarBack, barBack])
-		setNumberOfBarBacks(workingBarBack.length + 1)
-	}
+		setWorkingBarBack([...workingBarBack, barBack]);
+		setNumberOfBarBacks(workingBarBack.length + 1);
+	};
 
 	const removeWorkingBarBack = (employee) => {
 		const newList = workingBarBack.filter(
@@ -73,6 +87,17 @@ const App = () => {
 		setWorkingBarBack([...newList]);
 	};
 
+	const addWorkingCookHandler = (cook) => {
+		setWorkingCook([...workingCook, cook]);
+		setNumberOfCooks(workingCook.length + 1);
+	};
+
+	const removeWorkingCook = (employee) => {
+		console.log(employee);
+		const newList = workingCook.filter((cook) => !cook.includes(employee));
+		console.log(newList);
+		setWorkingCook([...newList]);
+	};
 
 	const isSubmitedHandler = (submit) => {
 		setIsSubmited(submit);
@@ -86,15 +111,18 @@ const App = () => {
 					<TipsForm
 						tips={enteredTips}
 						workingBartender={newWorkingBartenders}
-						removeWorkingBartender={removeWorkingBartender}
-						totalTips={submitHandler}
 						newWorkingBartender={addWorkingBartenderHandler}
-						isSubmited={isSubmited}
-						isSubmitedHandler={isSubmitedHandler}
+						removeWorkingBartender={removeWorkingBartender}
 						bartenders={numberOfBartenders}
 						workingBarBack={workingBarBack}
 						newWorkingBarBack={addWorkingBarBackHandler}
 						removeWorkingBarBack={removeWorkingBarBack}
+						workingCook={workingCook}
+						newWorkingCook={addWorkingCookHandler}
+						removeWorkingCook={removeWorkingCook}
+						totalTips={submitHandler}
+						isSubmited={isSubmited}
+						isSubmitedHandler={isSubmitedHandler}
 					/>
 				</div>
 			) : (
@@ -105,6 +133,10 @@ const App = () => {
 						totalTips={totalTipsCollected}
 						bartenders={numberOfBartenders}
 						workingBartenders={newWorkingBartenders}
+						numberOfBarBacks={numberOfBarBacks}
+						workingBarBack={workingBarBack}
+						isSubmited={isSubmited}
+						isSubmitedHandler={isSubmitedHandler}
 					/>
 				</div>
 			)}

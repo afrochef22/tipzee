@@ -1,16 +1,27 @@
 import React from "react";
 
-import { Card, Col, FormGroup, Label } from "reactstrap";
+import { Card, Col, FormGroup, Label, Button } from "reactstrap";
 import "./TipBreakDown.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const TipBreakDown = (props) => {
 	const barbackTips = parseFloat(Number(props.totalTips) * 0.15).toFixed(2);
+
+	const tipsPerBarBack = parseFloat(
+		barbackTips / props.numberOfBarBacks
+	).toFixed(2);
+
 	const tipsAfterBarback = props.totalTips - barbackTips;
 
 	const tipsPerBartender = parseFloat(
 		tipsAfterBarback / props.bartenders
 	).toFixed(2);
+
+	const submitHandler2 = () => {
+		console.log("click");
+		props.isSubmitedHandler(false);
+	};
+
 	return (
 		<div className="bg1 height100">
 			<Card className="row-content card-container">
@@ -20,10 +31,12 @@ const TipBreakDown = (props) => {
 				</div>
 				<div>
 					<h3>BarBack Tips</h3>
-					<FormGroup row>
-						<Label sm={4}>BarBack</Label>
-						<Col sm={8}>{barbackTips}</Col>
-					</FormGroup>
+					{props.workingBarBack.map((barBack, i) => (
+						<FormGroup row>
+							<Label sm={4}>{barBack}</Label>
+							<Col sm={8}>{tipsPerBarBack}</Col>
+						</FormGroup>
+					))}
 				</div>
 				<div>
 					<h3>Bartender Tips</h3>
@@ -34,6 +47,14 @@ const TipBreakDown = (props) => {
 						</FormGroup>
 					))}
 				</div>
+				<Button
+					onClick={submitHandler2}
+					className="button-block bg2"
+					size="lg"
+					type="submit"
+				>
+					Calculate Tips
+				</Button>
 			</Card>
 		</div>
 	);

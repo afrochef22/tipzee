@@ -1,31 +1,31 @@
 import React, { useState } from "react";
 import { FormGroup, Input, Button, InputGroup } from "reactstrap";
-import "./Barback.css";
+import "./Cook.css";
 
-const BarBack = (props) => {
+const Cook = (props) => {
 	const [selected, setSelected] = useState("");
-	const addWorkingBarBack = (e) => {
-		props.newWorkingBarBack(e.target.value);
+	const addWorkingCook = (e) => {
+		props.newWorkingCook(e.target.value);
 	};
 
 	const removeHandler = (e) => {
 		e.preventDefault();
 		const inputVal = document.getElementById(e.target.value).value;
-		props.removeWorkingBarBack(inputVal);
+		props.removeWorkingCook(inputVal);
 	};
 
 	return (
 		<div>
 			<FormGroup>
-				<h2>Who is bar-backing?</h2>
-				{props.workingBarBack.map((barBack, i) => (
+				<h2>Who is cooking?</h2>
+				{props.workingCook.map((cook, i) => (
 					<InputGroup
 						className="select-bartender"
-						key={barBack}
+						key={cook}
 						onSubmit={removeHandler}
 					>
-						<Input readOnly defaultValue={barBack} id={barBack} />
-						<Button color="danger" value={barBack} onClick={removeHandler}>
+						<Input readOnly defaultValue={cook} id={cook} />
+						<Button color="danger" value={cook} onClick={removeHandler}>
 							Remove
 						</Button>
 					</InputGroup>
@@ -34,22 +34,22 @@ const BarBack = (props) => {
 					id=""
 					type="select"
 					value={""}
-					placeholder="Select a bar-back"
-					onChange={addWorkingBarBack}
+					placeholder="Select a cook"
+					onChange={addWorkingCook}
 				>
-					{props.tips.barBacks
-						.filter((cook) => !props.workingCook.includes(cook.value))
+					{props.tips.cooks
 						.filter(
 							(bartender) => !props.workingBartender.includes(bartender.value)
 						)
 						.filter((barBack) => !props.workingBarBack.includes(barBack.value))
-						.map((barBack, i) => (
+						.filter((cook) => !props.workingCook.includes(cook.value))
+						.map((cook, i) => (
 							<option
-								disabled={barBack.disabled}
-								key={barBack.value}
-								value={barBack.value}
+								disabled={cook.disabled}
+								key={cook.value}
+								value={cook.value}
 							>
-								{barBack.text}
+								{cook.text}
 							</option>
 						))}
 				</Input>
@@ -58,4 +58,4 @@ const BarBack = (props) => {
 	);
 };
 
-export default BarBack;
+export default Cook;
