@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/tipzee/static/css/main.98d336e8.css",
+    "main.js": "/tipzee/static/js/main.19162209.js",
+    "index.html": "/tipzee/index.html",
+    "main.98d336e8.css.map": "/tipzee/static/css/main.98d336e8.css.map",
+    "main.19162209.js.map": "/tipzee/static/js/main.19162209.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.98d336e8.css",
+    "static/js/main.19162209.js"
+  ]
+}
