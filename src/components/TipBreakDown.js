@@ -47,14 +47,6 @@ const TipBreakDown = (props) => {
 						</FormGroup>
 					))}
 				</div>
-				<Button
-					onClick={submitHandler2}
-					className="button-block bg2"
-					size="lg"
-					type="submit"
-				>
-					Calculate Tips
-				</Button>
 			</Card>
 		</div>
 	);
