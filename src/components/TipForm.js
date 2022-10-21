@@ -41,6 +41,11 @@ const TipsForm = (props) => {
 		props.isSubmitedHandler(true);
 	};
 
+	const foodSalesHandler = (e) => {
+		let sales = e.target.value;
+		return props.addFoodSales(sales);
+	};
+
 	const barTipHandler = (e) => {
 		let value = e.target.value;
 		let id = e.target.id;
@@ -61,7 +66,6 @@ const TipsForm = (props) => {
 		const inputVal = document.getElementById(e.target.value).value;
 		props.removeWorkingBartender(inputVal);
 	};
-
 	return (
 		<div className="bg1 height100">
 			{props.isSubmited === false ? (
@@ -144,6 +148,17 @@ const TipsForm = (props) => {
 				<div className="bg1">
 					<Card body className="card-container">
 						<Form className="row-content">
+							<FormGroup row key={""}>
+								<Label sm={4}>Total Food Sales</Label>
+								<Col sm={8}>
+									<Input
+										id={""}
+										name="FoodSalesTotal"
+										type="number"
+										onChange={foodSalesHandler}
+									/>
+								</Col>
+							</FormGroup>
 							<h2>Tips Collected</h2>
 							{props.workingBartender.map((bartender, i) => (
 								<FormGroup row key={i}>

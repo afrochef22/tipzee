@@ -5,13 +5,19 @@ import "./TipBreakDown.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const TipBreakDown = (props) => {
-	const barbackTips = parseFloat(Number(props.totalTips) * 0.15).toFixed(2);
+	const cooksTips = parseFloat(Number(props.totalFoodSales) * 0.15).toFixed(2);
+
+	const tipsPerCook = parseFloat(cooksTips / props.numberOfCooks);
+
+	const barbackTips = parseFloat(
+		Number(props.totalTips - cooksTips) * 0.15
+	).toFixed(2);
 
 	const tipsPerBarBack = parseFloat(
 		barbackTips / props.numberOfBarBacks
 	).toFixed(2);
 
-	const tipsAfterBarback = props.totalTips - barbackTips;
+	const tipsAfterBarback = props.totalTips - cooksTips - barbackTips;
 
 	const tipsPerBartender = parseFloat(
 		tipsAfterBarback / props.bartenders
@@ -27,7 +33,12 @@ const TipBreakDown = (props) => {
 			<Card className="row-content card-container">
 				<div>
 					<h1>Total Tips Collected</h1>
-					<h2>{props.totalTips}</h2>
+					{props.workingCook.map((cook, i) => (
+						<FormGroup row>
+							<Label sm={4}>{cook}</Label>
+							<Col sm={8}>{tipsPerCook}</Col>
+						</FormGroup>
+					))}
 				</div>
 				<div>
 					<h3>BarBack Tips</h3>

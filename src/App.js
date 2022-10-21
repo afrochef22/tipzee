@@ -42,6 +42,8 @@ const App = () => {
 		],
 	};
 
+	const [totalFoodSales, setTotalFoodSales] = useState(0);
+
 	const [totalTipsCollected, setTotalTipsCollected] = useState(0);
 
 	const [numberOfBartenders, setNumberOfBartenders] = useState(0);
@@ -103,6 +105,9 @@ const App = () => {
 		setIsSubmited(submit);
 	};
 
+	const addFoodSalesHandler = (sales) => {
+		setTotalFoodSales(sales);
+	};
 	return (
 		<React.Fragment>
 			{totalTipsCollected < 1 ? (
@@ -123,6 +128,7 @@ const App = () => {
 						totalTips={submitHandler}
 						isSubmited={isSubmited}
 						isSubmitedHandler={isSubmitedHandler}
+						addFoodSales={addFoodSalesHandler}
 					/>
 				</div>
 			) : (
@@ -131,10 +137,13 @@ const App = () => {
 					<TipBreakDown
 						tips={enteredTips}
 						totalTips={totalTipsCollected}
+						totalFoodSales={totalFoodSales}
 						bartenders={numberOfBartenders}
 						workingBartenders={newWorkingBartenders}
 						numberOfBarBacks={numberOfBarBacks}
+						numberOfCooks={numberOfCooks}
 						workingBarBack={workingBarBack}
+						workingCook={workingCook}
 						isSubmited={isSubmited}
 						isSubmitedHandler={isSubmitedHandler}
 					/>
