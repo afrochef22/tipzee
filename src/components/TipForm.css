@@ -43,3 +43,9 @@
 .select-bartender {
 	margin: 10px 0;
 }
+
+@media only screen and (max-width: 600px) {
+	.card-container {
+		width: 85%;
+	}
+}
