@@ -35,10 +35,10 @@ const App = () => {
 		],
 
 		cooks: [
-			{ value: "", text: "Select Cook", disabled: true },
-			{ value: "Francisco Cardenas", text: "Francisco Cardenas" },
-			{ value: "Chuey", text: "Chuey" },
-			{ value: "Ashanti Rogers", text: "Ashanti Rogers" },
+			// { value: "", text: "Select Cook", disabled: true },
+			{ value: "Francisco Cardenas", label: "Francisco Cardenas" },
+			{ value: "Chuey", label: "Chuey" },
+			{ value: "Ashanti Rogers", label: "Ashanti Rogers" },
 		],
 	};
 
@@ -83,27 +83,32 @@ const App = () => {
 	};
 
 	const removeWorkingBarBack = (employee) => {
-		const newList = workingBarBack.filter(
-			(barBack) => !barBack.includes(employee)
-		);
-		setWorkingBarBack([...newList]);
-	};
-
-	const removeAllBarBacks = ()=>{
-		setWorkingBarBack([])
-		setNumberOfBarBacks(0)
-	} 
-
+		
+		if (employee.length > 1) {
+			
+			setWorkingBarBack([])
+		}else{
+			const newList = workingBarBack.filter(
+				(barBack) => !barBack.includes(employee)
+			);
+			setWorkingBarBack([...newList]);
+		};
+		}
+		
+	
 	const addWorkingCookHandler = (cook) => {
 		setWorkingCook([...workingCook, cook]);
 		setNumberOfCooks(workingCook.length + 1);
 	};
 
 	const removeWorkingCook = (employee) => {
-		console.log(employee);
+		if (employee.length > 1) {
+			
+			setWorkingCook([])
+		}else{
 		const newList = workingCook.filter((cook) => !cook.includes(employee));
-		console.log(newList);
 		setWorkingCook([...newList]);
+		}
 	};
 
 	const isSubmitedHandler = (submit) => {
@@ -134,7 +139,6 @@ const App = () => {
 						isSubmited={isSubmited}
 						isSubmitedHandler={isSubmitedHandler}
 						addFoodSales={addFoodSalesHandler}
-						removeAllBarBacks={removeAllBarBacks}
 					/>
 				</div>
 			) : (

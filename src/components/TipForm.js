@@ -88,7 +88,6 @@ const TipsForm = (props) => {
 								removeWorkingBarBack={props.removeWorkingBarBack}
 								workingBartender={props.workingBartender}
 								workingCook={props.workingCook}
-								removeAllBarBacks={props.removeAllBarBacks}
 							/>
 
 							<h2 htmlFor="exampleSelect">Who is bartending?</h2>
