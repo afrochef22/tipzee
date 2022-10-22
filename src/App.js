@@ -28,10 +28,10 @@ const App = () => {
 		],
 
 		barBacks: [
-			{ value: "", text: "Select Bar-back", disabled: true },
-			{ value: "Carlos Cardenas", text: "Carlos Cardenas" },
-			{ value: "Jose Verde", text: "Jose Verde" },
-			{ value: "Ashanti Rogers", text: "Ashanti Rogers" },
+			// { value: "", label: "Select Bar-back", disabled: true },
+			{ value: "Carlos Cardenas", label: "Carlos Cardenas" },
+			{ value: "Jose Verde", label: "Jose Verde" },
+			{ value: "Ashanti Rogers", label: "Ashanti Rogers" },
 		],
 
 		cooks: [
@@ -89,6 +89,11 @@ const App = () => {
 		setWorkingBarBack([...newList]);
 	};
 
+	const removeAllBarBacks = ()=>{
+		setWorkingBarBack([])
+		setNumberOfBarBacks(0)
+	} 
+
 	const addWorkingCookHandler = (cook) => {
 		setWorkingCook([...workingCook, cook]);
 		setNumberOfCooks(workingCook.length + 1);
@@ -129,6 +134,7 @@ const App = () => {
 						isSubmited={isSubmited}
 						isSubmitedHandler={isSubmitedHandler}
 						addFoodSales={addFoodSalesHandler}
+						removeAllBarBacks={removeAllBarBacks}
 					/>
 				</div>
 			) : (
