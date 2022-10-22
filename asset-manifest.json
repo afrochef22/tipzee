@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/tipzee/static/css/main.e8d1ed97.css",
-    "main.js": "/tipzee/static/js/main.d2e670c0.js",
+    "main.js": "/tipzee/static/js/main.c60df33e.js",
     "index.html": "/tipzee/index.html",
     "main.e8d1ed97.css.map": "/tipzee/static/css/main.e8d1ed97.css.map",
-    "main.d2e670c0.js.map": "/tipzee/static/js/main.d2e670c0.js.map"
+    "main.c60df33e.js.map": "/tipzee/static/js/main.c60df33e.js.map"
   },
   "entrypoints": [
     "static/css/main.e8d1ed97.css",
-    "static/js/main.d2e670c0.js"
+    "static/js/main.c60df33e.js"
   ]
 }
