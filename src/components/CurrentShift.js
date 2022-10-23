@@ -21,7 +21,7 @@ function DayOfTheWeek(day) {
 		case 5:
 			day = "Friday";
 			break;
-		case 6:
+		case -1:
 			day = "Saturday";
 			break;
 		default:
@@ -39,8 +39,7 @@ function CurrentDate() {
 	const yesterdayDate = newDate.getDate() - 1;
 	const lastMonth = newDate.getMonth();
 	const lastYear = newDate.getFullYear() - 1;
-	const yesterday = newDate.getDay() - 1;
-
+	const yesterday = newDate.getDay() -1;
 	const hour = newDate.getHours();
 
 	const dateData = {
