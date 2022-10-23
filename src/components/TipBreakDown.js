@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { Card, Col, FormGroup, Label, Button } from "reactstrap";
 import "./TipBreakDown.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const TipBreakDown = (props) => {
+	const [numberOfBartenders, setNumberOfBartenders] = useState(0);
+	const [totalTipsCollected, setTotalTipsCollected] = useState(0);
+
+	const backBtnHandler = (e) => {
+		setNumberOfBartenders(0);
+		setTotalTipsCollected(0);
+	};
+
 	const cooksTips = parseFloat(Number(props.totalFoodSales) * 0.15).toFixed(2);
 
 	const tipsPerCook = parseFloat(cooksTips / props.numberOfCooks);
@@ -58,6 +66,14 @@ const TipBreakDown = (props) => {
 						</FormGroup>
 					))}
 				</div>
+				<Button
+					onClick={backBtnHandler}
+					className="button-block bg2"
+					size="lg"
+					type="submit"
+				>
+					Back
+				</Button>
 			</Card>
 		</div>
 	);

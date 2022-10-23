@@ -7,24 +7,24 @@ import TipBreakDown from "./components/TipBreakDown";
 const App = () => {
 	const enteredTips = {
 		bartenders: [
-			{ value: "", text: "Select Bartender", disabled: true },
-			{ value: "Ashanti Rogers", text: "Ashanti Rogers", tipsCollected: 0 },
-			{ value: "Michelle Rogers", text: "Michelle Rogers", tipsCollected: 0 },
-			{ value: "David Perricone", text: "David Perricone", tipsCollected: 0 },
-			{ value: "Hayley Pond", text: "Hayley Pond", tipsCollected: 0 },
-			{ value: "Jose Verde", text: "Jose Verde", tipsCollected: 0 },
-			{ value: "Kristin Lorenz", text: "Kristin Lorenz", tipsCollected: 0 },
-			{ value: "Michael Martin", text: "Micheal Martin", tipsCollected: 0 },
+			// { value: "", text: "Select Bartender", disabled: true },
+			{ value: "Ashanti Rogers", label: "Ashanti Rogers", tipsCollected: 0 },
+			{ value: "Michelle Rogers", label: "Michelle Rogers", tipsCollected: 0 },
+			{ value: "David Perricone", label: "David Perricone", tipsCollected: 0 },
+			{ value: "Hayley Pond", label: "Hayley Pond", tipsCollected: 0 },
+			{ value: "Jose Verde", label: "Jose Verde", tipsCollected: 0 },
+			{ value: "Kristin Lorenz", label: "Kristin Lorenz", tipsCollected: 0 },
+			{ value: "Michael Martin", label: "Micheal Martin", tipsCollected: 0 },
 			{
 				value: "Rachel Van Der Pol",
-				text: "Rachel Van Der Pol",
+				label: "Rachel Van Der Pol",
 				tipsCollected: 0,
 			},
-			{ value: "Andre Jalaian", text: "Andre Jalaian", tipsCollected: 0 },
-			{ value: "Erik Zinkel", text: "Erik Zinkel", tipsCollected: 0 },
-			{ value: "Aaron Montaigne", text: "Aaron Montaigne", tipsCollected: 0 },
-			{ value: "Charlie Miller", text: "Charlie Miller", tipsCollected: 0 },
-			{ value: "Tony Crouse", text: "Tony Crouse", tipsCollected: 0 },
+			{ value: "Andre Jalaian", label: "Andre Jalaian", tipsCollected: 0 },
+			{ value: "Erik Zinkel", label: "Erik Zinkel", tipsCollected: 0 },
+			{ value: "Aaron Montaigne", label: "Aaron Montaigne", tipsCollected: 0 },
+			{ value: "Charlie Miller", label: "Charlie Miller", tipsCollected: 0 },
+			{ value: "Tony Crouse", label: "Tony Crouse", tipsCollected: 0 },
 		],
 
 		barBacks: [
@@ -71,10 +71,14 @@ const App = () => {
 	};
 
 	const removeWorkingBartender = (employee) => {
-		const newList = newWorkingBartenders.filter(
-			(bartender) => !bartender.includes(employee)
-		);
-		setWorkingBartender([...newList]);
+		if (employee.length > 1) {
+			setWorkingBartender([]);
+		} else {
+			const newList = newWorkingBartenders.filter(
+				(bartender) => !bartender.includes(employee)
+			);
+			setWorkingBartender([...newList]);
+		}
 	};
 
 	const addWorkingBarBackHandler = (barBack) => {
@@ -83,19 +87,16 @@ const App = () => {
 	};
 
 	const removeWorkingBarBack = (employee) => {
-		
 		if (employee.length > 1) {
-			
-			setWorkingBarBack([])
-		}else{
+			setWorkingBarBack([]);
+		} else {
 			const newList = workingBarBack.filter(
 				(barBack) => !barBack.includes(employee)
 			);
 			setWorkingBarBack([...newList]);
-		};
 		}
-		
-	
+	};
+
 	const addWorkingCookHandler = (cook) => {
 		setWorkingCook([...workingCook, cook]);
 		setNumberOfCooks(workingCook.length + 1);
@@ -103,11 +104,10 @@ const App = () => {
 
 	const removeWorkingCook = (employee) => {
 		if (employee.length > 1) {
-			
-			setWorkingCook([])
-		}else{
-		const newList = workingCook.filter((cook) => !cook.includes(employee));
-		setWorkingCook([...newList]);
+			setWorkingCook([]);
+		} else {
+			const newList = workingCook.filter((cook) => !cook.includes(employee));
+			setWorkingCook([...newList]);
 		}
 	};
 

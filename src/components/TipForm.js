@@ -10,6 +10,7 @@ import {
 	InputGroup,
 } from "reactstrap";
 import CurrentShift from "./CurrentShift";
+import Bartender from "./Bartender";
 import BarBack from "./Barback";
 import Cook from "./Cook";
 import "./TipForm.css";
@@ -90,49 +91,14 @@ const TipsForm = (props) => {
 								workingCook={props.workingCook}
 							/>
 
-							<h2 htmlFor="exampleSelect">Who is bartending?</h2>
-							{props.workingBartender.map((bartender, i) => (
-								<InputGroup
-									className="select-bartender"
-									key={bartender}
-									onSubmit={removeHandler}
-								>
-									<Input readOnly defaultValue={bartender} id={bartender} />
-									<Button
-										color="danger"
-										value={bartender}
-										onClick={removeHandler}
-									>
-										Remove
-									</Button>
-								</InputGroup>
-							))}
-							<Input
-								id=""
-								type="select"
-								value={selected}
-								placeholder="Select a bartender"
-								onChange={addWorkingBartender}
-							>
-								{props.tips.bartenders
-									.filter((cook) => !props.workingCook.includes(cook.value))
-									.filter(
-										(barBack) => !props.workingBarBack.includes(barBack.value)
-									)
-									.filter(
-										(bartender) =>
-											!props.workingBartender.includes(bartender.value)
-									)
-									.map((bartender, i) => (
-										<option
-											disabled={bartender.disabled}
-											key={bartender.value}
-											value={bartender.value}
-										>
-											{bartender.text}
-										</option>
-									))}
-							</Input>
+							<Bartender
+								tips={props.tips}
+								workingBarBack={props.workingBarBack}
+								newWorkingBartender={props.newWorkingBartender}
+								removeWorkingBartender={props.removeWorkingBartender}
+								workingBartender={props.workingBartender}
+								workingCook={props.workingCook}
+							/>
 						</FormGroup>
 					</Form>
 					<Button
