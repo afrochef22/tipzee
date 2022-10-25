@@ -41,10 +41,16 @@ const TipBreakDown = (props) => {
 			<Card className="row-content card-container">
 				<div>
 					<h1>Total Tips Collected</h1>
+					<h1>${props.totalTips}</h1>
+					<FormGroup row>
+							<Label sm={4}>Total Tips Collected</Label>
+							<Col sm={8}>{props.totalTips}</Col>
+						</FormGroup>
+						<h3>Cooks Tips</h3>
 					{props.workingCook.map((cook, i) => (
 						<FormGroup row>
 							<Label sm={4}>{cook}</Label>
-							<Col sm={8}>{tipsPerCook}</Col>
+							<Col sm={8}>${tipsPerCook}</Col>
 						</FormGroup>
 					))}
 				</div>
@@ -53,7 +59,7 @@ const TipBreakDown = (props) => {
 					{props.workingBarBack.map((barBack, i) => (
 						<FormGroup row>
 							<Label sm={4}>{barBack}</Label>
-							<Col sm={8}>{tipsPerBarBack}</Col>
+							<Col sm={8}>${tipsPerBarBack}</Col>
 						</FormGroup>
 					))}
 				</div>
