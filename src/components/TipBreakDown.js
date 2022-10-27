@@ -9,17 +9,21 @@ const TipBreakDown = (props) => {
 	const [totalTipsCollected, setTotalTipsCollected] = useState(0);
 
 	const backBtnHandler = (e) => {
-		setNumberOfBartenders(0);
-		setTotalTipsCollected(0);
+		window.location.reload();
 	};
 
-	const cooksTips = parseFloat(Number(props.totalFoodSales) * 0.15).toFixed(2);
+	const cooksTips =
+		props.numberOfCooks === 0
+			? 0
+			: parseFloat(Number(props.totalFoodSales) * 0.15).toFixed(2);
 
-	const tipsPerCook = parseFloat(cooksTips / props.numberOfCooks);
+	const tipsPerCook =
+		props.numberOfCooks === 0 ? 0 : parseFloat(cooksTips / props.numberOfCooks);
 
-	const barbackTips = parseFloat(
-		Number(props.totalTips - cooksTips) * 0.15
-	).toFixed(2);
+	const barbackTips =
+		props.numberOfBarBacks === 0
+			? 0
+			: parseFloat(Number(props.totalTips - cooksTips) * 0.15).toFixed(2);
 
 	const tipsPerBarBack = parseFloat(
 		barbackTips / props.numberOfBarBacks
@@ -42,11 +46,8 @@ const TipBreakDown = (props) => {
 				<div>
 					<h1>Total Tips Collected</h1>
 					<h1>${props.totalTips}</h1>
-					<FormGroup row>
-							<Label sm={4}>Total Tips Collected</Label>
-							<Col sm={8}>{props.totalTips}</Col>
-						</FormGroup>
-						<h3>Cooks Tips</h3>
+
+					<h3>Cooks Tips</h3>
 					{props.workingCook.map((cook, i) => (
 						<FormGroup row>
 							<Label sm={4}>{cook}</Label>
@@ -78,7 +79,7 @@ const TipBreakDown = (props) => {
 					size="lg"
 					type="submit"
 				>
-					Back
+					Reset
 				</Button>
 			</Card>
 		</div>
