@@ -60,6 +60,8 @@ const App = () => {
 
 	const [isSubmited, setIsSubmited] = useState(false);
 
+	const [isHoursClicked, setIsHoursClicked] = useState(false);
+
 	const submitHandler = (inputedTips, numOfBartenders, totalTips) => {
 		setTotalTipsCollected(inputedTips);
 		setNumberOfBartenders(numOfBartenders);
@@ -118,6 +120,13 @@ const App = () => {
 	const addFoodSalesHandler = (sales) => {
 		setTotalFoodSales(sales);
 	};
+
+	const toggleTipsByHours = () => {
+		isHoursClicked === true
+			? setIsHoursClicked(false)
+			: setIsHoursClicked(true);
+	};
+
 	return (
 		<React.Fragment>
 			{totalTipsCollected < 1 ? (
@@ -139,6 +148,8 @@ const App = () => {
 						isSubmited={isSubmited}
 						isSubmitedHandler={isSubmitedHandler}
 						addFoodSales={addFoodSalesHandler}
+						toggleTipsByHours={toggleTipsByHours}
+						isHoursClicked={isHoursClicked}
 					/>
 				</div>
 			) : (

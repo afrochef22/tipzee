@@ -13,6 +13,7 @@ import CurrentShift from "./CurrentShift";
 import Bartender from "./Bartender";
 import BarBack from "./Barback";
 import Cook from "./Cook";
+import CheckIfBreakdownByHours from "./CheckIfBreakdownByHours";
 import "./TipForm.css";
 import "../index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -72,6 +73,10 @@ const TipsForm = (props) => {
 			{props.isSubmited === false ? (
 				<Card className="card-container">
 					<CurrentShift />
+					<CheckIfBreakdownByHours
+						toggleTipsByHours={props.toggleTipsByHours}
+						isHoursClicked={props.isHoursClicked}
+					/>
 					<Form>
 						<FormGroup className="row-content card-container">
 							<Cook
@@ -114,6 +119,7 @@ const TipsForm = (props) => {
 				<div className="bg1">
 					<Card body className="card-container">
 						<Form className="row-content">
+							<CheckIfBreakdownByHours />
 							<FormGroup row key={""}>
 								<Label sm={4}>Total Food Sales</Label>
 								<Col sm={8}>
