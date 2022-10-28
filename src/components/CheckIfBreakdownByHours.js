@@ -7,6 +7,7 @@ const CheckIfBreakdownByHours = (props) => {
 			{props.isHoursClicked === false ? (
 				<FormGroup switch>
 					<Input
+						readOnly
 						checked={props.isHoursClicked}
 						type="switch"
 						role="switch"
@@ -18,6 +19,7 @@ const CheckIfBreakdownByHours = (props) => {
 				<div>
 					<FormGroup switch>
 						<Input
+							readOnly
 							checked={props.isHoursClicked}
 							type="switch"
 							role="switch"
@@ -26,15 +28,15 @@ const CheckIfBreakdownByHours = (props) => {
 						<Label check>Calculate by hours worked</Label>
 					</FormGroup>
 					<FormGroup inline check>
-						<Input type="checkbox" onClick={""} />
+						<Input readOnly type="checkbox" onClick={props.toggleCookByHours} />
 						<Label check>Calculate cooks</Label>
 					</FormGroup>
 					<FormGroup inline check>
-						<Input type="checkbox" onClick={""} />
+						<Input readOnly type="checkbox" onClick={props.toggleBarBackByHours} />
 						<Label check>Calculate barbacks</Label>
 					</FormGroup>
 					<FormGroup inline check>
-						<Input type="checkbox" onClick={""} />
+						<Input readOnly type="checkbox" onClick={props.toggleBartenderByHours} />
 						<Label check>Calculate bartenders</Label>
 					</FormGroup>
 				</div>

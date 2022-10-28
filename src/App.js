@@ -62,6 +62,12 @@ const App = () => {
 
 	const [isHoursClicked, setIsHoursClicked] = useState(false);
 
+	const [isBartenderHoursClicked, setIsBartenderHoursClicked] = useState(false)
+
+	const [isBarBackHoursClicked, setIsBarBackHoursClicked] = useState(false)
+
+	const [isCookHoursClicked, setIsCookHoursClicked] = useState(false)
+
 	const submitHandler = (inputedTips, numOfBartenders, totalTips) => {
 		setTotalTipsCollected(inputedTips);
 		setNumberOfBartenders(numOfBartenders);
@@ -125,6 +131,28 @@ const App = () => {
 		isHoursClicked === true
 			? setIsHoursClicked(false)
 			: setIsHoursClicked(true);
+		console.log("hours clicked", isHoursClicked)
+	};
+
+	const toggleBartenderByHours = () => {
+		isBartenderHoursClicked === true
+			? setIsBartenderHoursClicked(false)
+			: setIsBartenderHoursClicked(true);
+		console.log("Bartender", isBartenderHoursClicked)
+	};
+
+	const toggleBarBackByHours = () => {
+		isBarBackHoursClicked === true
+			? setIsBarBackHoursClicked(false)
+			: setIsBarBackHoursClicked(true);
+		console.log("BarBack", isBarBackHoursClicked)
+	};
+
+	const toggleCookByHours = () => {
+		isCookHoursClicked === true
+			? setIsCookHoursClicked(false)
+			: setIsCookHoursClicked(true);
+		console.log("cook", isCookHoursClicked)
 	};
 
 	return (
@@ -150,6 +178,12 @@ const App = () => {
 						addFoodSales={addFoodSalesHandler}
 						toggleTipsByHours={toggleTipsByHours}
 						isHoursClicked={isHoursClicked}
+						toggleBartenderByHours={toggleBartenderByHours}
+						isBartenderHoursClicked={isBartenderHoursClicked}
+						toggleBarBackByHours={toggleBarBackByHours}
+						isBarBackHoursClicked={isBarBackHoursClicked}
+						toggleCookByHours={toggleCookByHours}
+						isCookHoursClicked={isCookHoursClicked}
 					/>
 				</div>
 			) : (
