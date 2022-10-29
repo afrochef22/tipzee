@@ -28,12 +28,21 @@ const TipsForm = (props) => {
 		return bartender.tipsCollected >= 0;
 	});
 
+
+	const bartenderHours = props.tips.bartenders.filter((bartender) => {
+		return (bartender.hoursWorked >= 0);
+	});
+
 	const submitHandler = (e) => {
 		e.preventDefault();
-		const list = bartendersInfo.map((post) => post.tipsCollected);
+		const list = bartendersInfo.map((bartender) => bartender.tipsCollected);
+		const bartenderHoursList = bartenderHours.map((bartender) => bartender.hoursWorked);
 		const sum = list.reduce((x, y) => x + y);
-		setTotalTipsCollected(sum);
-		props.totalTips(sum, props.bartenders);
+		const bartenderHoursWorkedSum = bartenderHoursList.reduce((x, y) => x + y);
+
+		console.log(bartenderHoursWorkedSum)
+		console.log(sum)
+		props.totalTips(sum, props.bartenders, bartenderHoursWorkedSum);
 	};
 
 	const submitHandler2 = () => {

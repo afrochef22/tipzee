@@ -8,23 +8,23 @@ const App = () => {
 	const enteredTips = {
 		bartenders: [
 			// { value: "", text: "Select Bartender", disabled: true },
-			{ value: "Ashanti Rogers", label: "Ashanti Rogers", tipsCollected: 0 },
-			{ value: "Michelle Rogers", label: "Michelle Rogers", tipsCollected: 0 },
-			{ value: "David Perricone", label: "David Perricone", tipsCollected: 0 },
-			{ value: "Hayley Pond", label: "Hayley Pond", tipsCollected: 0 },
-			{ value: "Jose Verde", label: "Jose Verde", tipsCollected: 0 },
-			{ value: "Kristin Lorenz", label: "Kristin Lorenz", tipsCollected: 0 },
-			{ value: "Michael Martin", label: "Micheal Martin", tipsCollected: 0 },
+			{ value: "Ashanti Rogers", label: "Ashanti Rogers", tipsCollected: 0, hoursWorked: 0 },
+			{ value: "Michelle Rogers", label: "Michelle Rogers", tipsCollected: 0, hoursWorked: 0 },
+			{ value: "David Perricone", label: "David Perricone", tipsCollected: 0, hoursWorked: 0 },
+			{ value: "Hayley Pond", label: "Hayley Pond", tipsCollected: 0, hoursWorked: 0 },
+			{ value: "Jose Verde", label: "Jose Verde", tipsCollected: 0, hoursWorked: 0 },
+			{ value: "Kristin Lorenz", label: "Kristin Lorenz", tipsCollected: 0, hoursWorked: 0 },
+			{ value: "Michael Martin", label: "Micheal Martin", tipsCollected: 0, hoursWorked: 0 },
 			{
 				value: "Rachel Van Der Pol",
 				label: "Rachel Van Der Pol",
-				tipsCollected: 0,
+				tipsCollected: 0, hoursWorked: 0,
 			},
-			{ value: "Andre Jalaian", label: "Andre Jalaian", tipsCollected: 0 },
-			{ value: "Erik Zinkel", label: "Erik Zinkel", tipsCollected: 0 },
-			{ value: "Aaron Montaigne", label: "Aaron Montaigne", tipsCollected: 0 },
-			{ value: "Charlie Miller", label: "Charlie Miller", tipsCollected: 0 },
-			{ value: "Tony Crouse", label: "Tony Crouse", tipsCollected: 0 },
+			{ value: "Andre Jalaian", label: "Andre Jalaian", tipsCollected: 0, hoursWorked: 0 },
+			{ value: "Erik Zinkel", label: "Erik Zinkel", tipsCollected: 0, hoursWorked: 0 },
+			{ value: "Aaron Montaigne", label: "Aaron Montaigne", tipsCollected: 0, hoursWorked: 0 },
+			{ value: "Charlie Miller", label: "Charlie Miller", tipsCollected: 0, hoursWorked: 0 },
+			{ value: "Tony Crouse", label: "Tony Crouse", tipsCollected: 0, hoursWorked: 0 },
 		],
 
 		barBacks: [
@@ -46,6 +46,8 @@ const App = () => {
 
 	const [totalTipsCollected, setTotalTipsCollected] = useState(0);
 
+	const [totalBartnederHoursWorked, setTotalBartenderHoursWorked] = useState(0);
+
 	const [numberOfBartenders, setNumberOfBartenders] = useState(0);
 
 	const [numberOfBarBacks, setNumberOfBarBacks] = useState(0);
@@ -53,6 +55,8 @@ const App = () => {
 	const [numberOfCooks, setNumberOfCooks] = useState(0);
 
 	const [newWorkingBartenders, setWorkingBartender] = useState([]);
+
+	const [workingBartenderHoursList, setWorkingBartenderHoursList] = useState([])
 
 	const [workingBarBack, setWorkingBarBack] = useState([]);
 
@@ -68,15 +72,24 @@ const App = () => {
 
 	const [isCookHoursClicked, setIsCookHoursClicked] = useState(false)
 
-	const submitHandler = (inputedTips, numOfBartenders, totalTips) => {
+	const submitHandler = (inputedTips, numOfBartenders, bartnderHours, barBackHours, CookHours) => {
 		setTotalTipsCollected(inputedTips);
 		setNumberOfBartenders(numOfBartenders);
+		setTotalBartenderHoursWorked(bartnderHours)
 	};
+	console.log(totalBartnederHoursWorked)
 
 	const addWorkingBartenderHandler = (bartender) => {
 		setWorkingBartender([...newWorkingBartenders, bartender]);
 		setNumberOfBartenders(newWorkingBartenders.length + 1);
+
 	};
+
+	const addWorkingBartenderHoursHandler = hours => {
+		setWorkingBartenderHoursList([...workingBartenderHoursList, hours])
+	}
+
+
 
 	const removeWorkingBartender = (employee) => {
 		if (employee.length > 1) {
@@ -201,6 +214,9 @@ const App = () => {
 						workingCook={workingCook}
 						isSubmited={isSubmited}
 						isSubmitedHandler={isSubmitedHandler}
+						isBartenderHoursClicked={isBartenderHoursClicked}
+						totalBartnederHoursWorked={totalBartnederHoursWorked}
+						addWorkingBartenderHoursHandler={addWorkingBartenderHoursHandler}
 					/>
 				</div>
 			)}

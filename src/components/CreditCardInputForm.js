@@ -14,13 +14,23 @@ import "./CreditCardInputForm.css"
 const CreditCardInputForm = (props) => {
 
     const bartendersInfo = props.tips.bartenders.filter((bartender) => {
-        return bartender.tipsCollected >= 0;
+        return (bartender.tipsCollected >= 0, bartender.hoursWorked >= 0);
     });
 
     const foodSalesHandler = (e) => {
         let sales = e.target.value;
         return props.addFoodSales(sales);
     };
+
+    const hoursHandler = e => {
+        let value = e.target.value;
+        let id = e.target.id;
+        for (let i = -1; i < e.target.id; i++) {
+            if ((i = e.target.id)) {
+                props.tips.bartenders[id].hoursWorked = Number(value);
+            }
+        }
+    }
 
     const barTipHandler = (e) => {
         let value = e.target.value;
@@ -30,7 +40,6 @@ const CreditCardInputForm = (props) => {
                 props.tips.bartenders[id].tipsCollected = Number(value);
             }
         }
-        console.log(bartendersInfo);
     };
 
     return (
@@ -104,7 +113,7 @@ const CreditCardInputForm = (props) => {
                             <Col sm={3}>
                                 <Input id={props.tips.bartenders.findIndex(
                                     (index) => index.value === bartender
-                                )} type="number"></Input>
+                                )} type="number" onChange={hoursHandler}></Input>
                             </Col>
                             <Col sm={4}>
                                 <Input
