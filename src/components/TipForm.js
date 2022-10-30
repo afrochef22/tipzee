@@ -1,16 +1,11 @@
 import React, { useState } from "react";
-import {
-	Form,
-	FormGroup,
-	Button,
-	Card,
-} from "reactstrap";
+import { Form, FormGroup, Button, Card } from "reactstrap";
 import CurrentShift from "./CurrentShift";
 import Bartender from "./Bartender";
 import BarBack from "./Barback";
 import Cook from "./Cook";
 import CheckIfBreakdownByHours from "./CheckIfBreakdownByHours";
-import CreditCardInputForm from "./CreditCardInputForm"
+import CreditCardInputForm from "./CreditCardInputForm";
 import "./TipForm.css";
 import "../index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -28,27 +23,28 @@ const TipsForm = (props) => {
 		return bartender.tipsCollected >= 0;
 	});
 
-
 	const bartenderHours = props.tips.bartenders.filter((bartender) => {
-		return (bartender.hoursWorked >= 0);
+		return bartender.hoursWorked >= 0;
 	});
 
 	const submitHandler = (e) => {
 		e.preventDefault();
 		const list = bartendersInfo.map((bartender) => bartender.tipsCollected);
-		const bartenderHoursList = bartenderHours.map((bartender) => bartender.hoursWorked);
+		const bartenderHoursList = bartenderHours.map(
+			(bartender) => bartender.hoursWorked
+		);
 		const sum = list.reduce((x, y) => x + y);
 		const bartenderHoursWorkedSum = bartenderHoursList.reduce((x, y) => x + y);
 
-		console.log(bartenderHoursWorkedSum)
-		console.log(sum)
+		console.log(bartenderHoursWorkedSum);
+		console.log(sum);
 		props.totalTips(sum, props.bartenders, bartenderHoursWorkedSum);
+		props.addWorkingBartenderHoursHandler(bartenderHoursList);
 	};
 
 	const submitHandler2 = () => {
 		props.isSubmitedHandler(true);
 	};
-
 
 	return (
 		<div className="bg1 height100">
@@ -109,11 +105,14 @@ const TipsForm = (props) => {
 						<Form className="row-content">
 							<CreditCardInputForm
 								tips={props.tips}
-								addFoodSales={props.addFoodSales} workingBartender={props.workingBartender}
+								addFoodSales={props.addFoodSales}
+								workingBartender={props.workingBartender}
 								isBartenderHoursClicked={props.isBartenderHoursClicked}
 								isBarBackHoursClicked={props.isBarBackHoursClicked}
 								isCookHoursClicked={props.isCookHoursClicked}
-
+								addWorkingBartenderHoursHandler={
+									props.addWorkingBartenderHoursHandler
+								}
 							/>
 
 							<FormGroup>

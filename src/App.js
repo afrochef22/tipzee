@@ -8,23 +8,84 @@ const App = () => {
 	const enteredTips = {
 		bartenders: [
 			// { value: "", text: "Select Bartender", disabled: true },
-			{ value: "Ashanti Rogers", label: "Ashanti Rogers", tipsCollected: 0, hoursWorked: 0 },
-			{ value: "Michelle Rogers", label: "Michelle Rogers", tipsCollected: 0, hoursWorked: 0 },
-			{ value: "David Perricone", label: "David Perricone", tipsCollected: 0, hoursWorked: 0 },
-			{ value: "Hayley Pond", label: "Hayley Pond", tipsCollected: 0, hoursWorked: 0 },
-			{ value: "Jose Verde", label: "Jose Verde", tipsCollected: 0, hoursWorked: 0 },
-			{ value: "Kristin Lorenz", label: "Kristin Lorenz", tipsCollected: 0, hoursWorked: 0 },
-			{ value: "Michael Martin", label: "Micheal Martin", tipsCollected: 0, hoursWorked: 0 },
+			{
+				value: "Ashanti Rogers",
+				label: "Ashanti Rogers",
+				tipsCollected: 0,
+				hoursWorked: 0,
+			},
+			{
+				value: "Michelle Rogers",
+				label: "Michelle Rogers",
+				tipsCollected: 0,
+				hoursWorked: 0,
+			},
+			{
+				value: "David Perricone",
+				label: "David Perricone",
+				tipsCollected: 0,
+				hoursWorked: 0,
+			},
+			{
+				value: "Hayley Pond",
+				label: "Hayley Pond",
+				tipsCollected: 0,
+				hoursWorked: 0,
+			},
+			{
+				value: "Jose Verde",
+				label: "Jose Verde",
+				tipsCollected: 0,
+				hoursWorked: 0,
+			},
+			{
+				value: "Kristin Lorenz",
+				label: "Kristin Lorenz",
+				tipsCollected: 0,
+				hoursWorked: 0,
+			},
+			{
+				value: "Michael Martin",
+				label: "Micheal Martin",
+				tipsCollected: 0,
+				hoursWorked: 0,
+			},
 			{
 				value: "Rachel Van Der Pol",
 				label: "Rachel Van Der Pol",
-				tipsCollected: 0, hoursWorked: 0,
+				tipsCollected: 0,
+				hoursWorked: 0,
 			},
-			{ value: "Andre Jalaian", label: "Andre Jalaian", tipsCollected: 0, hoursWorked: 0 },
-			{ value: "Erik Zinkel", label: "Erik Zinkel", tipsCollected: 0, hoursWorked: 0 },
-			{ value: "Aaron Montaigne", label: "Aaron Montaigne", tipsCollected: 0, hoursWorked: 0 },
-			{ value: "Charlie Miller", label: "Charlie Miller", tipsCollected: 0, hoursWorked: 0 },
-			{ value: "Tony Crouse", label: "Tony Crouse", tipsCollected: 0, hoursWorked: 0 },
+			{
+				value: "Andre Jalaian",
+				label: "Andre Jalaian",
+				tipsCollected: 0,
+				hoursWorked: 0,
+			},
+			{
+				value: "Erik Zinkel",
+				label: "Erik Zinkel",
+				tipsCollected: 0,
+				hoursWorked: 0,
+			},
+			{
+				value: "Aaron Montaigne",
+				label: "Aaron Montaigne",
+				tipsCollected: 0,
+				hoursWorked: 0,
+			},
+			{
+				value: "Charlie Miller",
+				label: "Charlie Miller",
+				tipsCollected: 0,
+				hoursWorked: 0,
+			},
+			{
+				value: "Tony Crouse",
+				label: "Tony Crouse",
+				tipsCollected: 0,
+				hoursWorked: 0,
+			},
 		],
 
 		barBacks: [
@@ -56,7 +117,11 @@ const App = () => {
 
 	const [newWorkingBartenders, setWorkingBartender] = useState([]);
 
-	const [workingBartenderHoursList, setWorkingBartenderHoursList] = useState([])
+	const [workingBartenderHoursList, setWorkingBartenderHoursList] = useState(
+		[]
+	);
+
+	console.log(workingBartenderHoursList);
 
 	const [workingBarBack, setWorkingBarBack] = useState([]);
 
@@ -66,30 +131,34 @@ const App = () => {
 
 	const [isHoursClicked, setIsHoursClicked] = useState(false);
 
-	const [isBartenderHoursClicked, setIsBartenderHoursClicked] = useState(false)
+	const [isBartenderHoursClicked, setIsBartenderHoursClicked] = useState(false);
 
-	const [isBarBackHoursClicked, setIsBarBackHoursClicked] = useState(false)
+	const [isBarBackHoursClicked, setIsBarBackHoursClicked] = useState(false);
 
-	const [isCookHoursClicked, setIsCookHoursClicked] = useState(false)
+	const [isCookHoursClicked, setIsCookHoursClicked] = useState(false);
 
-	const submitHandler = (inputedTips, numOfBartenders, bartnderHours, barBackHours, CookHours) => {
+	const submitHandler = (
+		inputedTips,
+		numOfBartenders,
+		bartnderHours,
+		barBackHours,
+		CookHours
+	) => {
 		setTotalTipsCollected(inputedTips);
 		setNumberOfBartenders(numOfBartenders);
-		setTotalBartenderHoursWorked(bartnderHours)
+		setTotalBartenderHoursWorked(bartnderHours);
 	};
-	console.log(totalBartnederHoursWorked)
+	console.log(totalBartnederHoursWorked);
 
 	const addWorkingBartenderHandler = (bartender) => {
 		setWorkingBartender([...newWorkingBartenders, bartender]);
 		setNumberOfBartenders(newWorkingBartenders.length + 1);
-
 	};
 
-	const addWorkingBartenderHoursHandler = hours => {
-		setWorkingBartenderHoursList([...workingBartenderHoursList, hours])
-	}
-
-
+	const addWorkingBartenderHoursHandler = (hours) => {
+		console.log(hours);
+		setWorkingBartenderHoursList([...workingBartenderHoursList, hours]);
+	};
 
 	const removeWorkingBartender = (employee) => {
 		if (employee.length > 1) {
@@ -144,28 +213,28 @@ const App = () => {
 		isHoursClicked === true
 			? setIsHoursClicked(false)
 			: setIsHoursClicked(true);
-		console.log("hours clicked", isHoursClicked)
+		console.log("hours clicked", isHoursClicked);
 	};
 
 	const toggleBartenderByHours = () => {
 		isBartenderHoursClicked === true
 			? setIsBartenderHoursClicked(false)
 			: setIsBartenderHoursClicked(true);
-		console.log("Bartender", isBartenderHoursClicked)
+		console.log("Bartender", isBartenderHoursClicked);
 	};
 
 	const toggleBarBackByHours = () => {
 		isBarBackHoursClicked === true
 			? setIsBarBackHoursClicked(false)
 			: setIsBarBackHoursClicked(true);
-		console.log("BarBack", isBarBackHoursClicked)
+		console.log("BarBack", isBarBackHoursClicked);
 	};
 
 	const toggleCookByHours = () => {
 		isCookHoursClicked === true
 			? setIsCookHoursClicked(false)
 			: setIsCookHoursClicked(true);
-		console.log("cook", isCookHoursClicked)
+		console.log("cook", isCookHoursClicked);
 	};
 
 	return (
@@ -197,6 +266,8 @@ const App = () => {
 						isBarBackHoursClicked={isBarBackHoursClicked}
 						toggleCookByHours={toggleCookByHours}
 						isCookHoursClicked={isCookHoursClicked}
+						addWorkingBartenderHoursHandler={addWorkingBartenderHoursHandler}
+						workingBartenderHoursList={workingBartenderHoursList}
 					/>
 				</div>
 			) : (
@@ -217,6 +288,7 @@ const App = () => {
 						isBartenderHoursClicked={isBartenderHoursClicked}
 						totalBartnederHoursWorked={totalBartnederHoursWorked}
 						addWorkingBartenderHoursHandler={addWorkingBartenderHoursHandler}
+						workingBartenderHoursList={workingBartenderHoursList}
 					/>
 				</div>
 			)}

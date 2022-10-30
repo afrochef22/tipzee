@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { Form, FormGroup, Label, Input } from "reactstrap";
+import "./CheckIfBreakdownByHours.css";
 
 const CheckIfBreakdownByHours = (props) => {
 	return (
-		<div>
+		<div className="center">
 			{props.isHoursClicked === false ? (
 				<FormGroup switch>
 					<Input
@@ -32,11 +33,19 @@ const CheckIfBreakdownByHours = (props) => {
 						<Label check>Calculate cooks</Label>
 					</FormGroup>
 					<FormGroup inline check>
-						<Input readOnly type="checkbox" onClick={props.toggleBarBackByHours} />
+						<Input
+							readOnly
+							type="checkbox"
+							onClick={props.toggleBarBackByHours}
+						/>
 						<Label check>Calculate barbacks</Label>
 					</FormGroup>
 					<FormGroup inline check>
-						<Input readOnly type="checkbox" onClick={props.toggleBartenderByHours} />
+						<Input
+							readOnly
+							type="checkbox"
+							onClick={props.toggleBartenderByHours}
+						/>
 						<Label check>Calculate bartenders</Label>
 					</FormGroup>
 				</div>

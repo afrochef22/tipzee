@@ -12,7 +12,12 @@ const TipBreakDown = (props) => {
 		window.location.reload();
 	};
 
-	const totalBartenderHours = ""
+	console.log(props.workingBartenderHoursList[0]);
+	const bartenderHoursList = props.workingBartenderHoursList[0].filter(
+		(hours) => hours > 0
+	);
+
+	console.log(bartenderHoursList);
 
 	const cooksTips =
 		props.numberOfCooks === 0
@@ -27,28 +32,26 @@ const TipBreakDown = (props) => {
 			? 0
 			: parseFloat(Number(props.totalTips - cooksTips) * 0.15).toFixed(2);
 
-	const tipsPerBarBack = parseFloat(barbackTips / props.numberOfBarBacks
+	const tipsPerBarBack = parseFloat(
+		barbackTips / props.numberOfBarBacks
 	).toFixed(2);
 
 	const tipsAfterBarback = props.totalTips - cooksTips - barbackTips;
 
-	const barHours = props.totalBartnederHoursWorked
+	const barHours = props.totalBartnederHoursWorked;
 
 	const tipsPerBartender = () => {
 		if (props.isBartenderHoursClicked === true) {
-			let tipsPerHour = parseFloat(tipsAfterBarback / barHours).toFixed(2)
+			let tipsPerHour = parseFloat(tipsAfterBarback / barHours).toFixed(2);
 
-			return tipsPerHour
+			return tipsPerHour;
 		} else {
-			let tips = parseFloat(
-				tipsAfterBarback / props.bartenders
-			).toFixed(2);
-			return tips
+			let tips = parseFloat(tipsAfterBarback / props.bartenders).toFixed(2);
+			return tips;
 		}
+	};
 
-	}
-
-	const h = tipsPerBartender()
+	const tipsPerHour = tipsPerBartender();
 
 	const submitHandler2 = () => {
 		console.log("click");
@@ -84,7 +87,9 @@ const TipBreakDown = (props) => {
 					{props.workingBartenders.map((bartender, i) => (
 						<FormGroup row key={i}>
 							<Label sm={4}>{bartender}</Label>
-							<Col sm={8}>{h * props.tips.bartenders.hoursWorked}</Col>
+							<Col sm={8}>
+								{(tipsPerHour * bartenderHoursList[i]).toFixed(2)}
+							</Col>
 						</FormGroup>
 					))}
 				</div>
