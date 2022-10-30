@@ -12,7 +12,7 @@ import {
 import "./CreditCardInputForm.css";
 
 const CreditCardInputForm = (props) => {
-	const bartendersInfo = props.tips.bartenders.filter((bartender) => {
+	const bartendersInfo = props.employees.bartenders.filter((bartender) => {
 		return bartender.tipsCollected >= 0, bartender.hoursWorked >= 0;
 	});
 
@@ -26,9 +26,9 @@ const CreditCardInputForm = (props) => {
 		let id = e.target.id;
 		for (let i = -1; i < e.target.id; i++) {
 			if ((i = e.target.id)) {
-				props.tips.bartenders[id].hoursWorked = Number(value);
+				props.employees.bartenders[id].hoursWorked = Number(value);
 				props.addWorkingBartnederHoursHandler(
-					props.tips.bartenders[id].hoursWorked
+					props.employees.bartenders[id].hoursWorked
 				);
 			}
 		}
@@ -44,7 +44,7 @@ const CreditCardInputForm = (props) => {
 		let id = e.target.id;
 		for (let i = -1; i < e.target.id; i++) {
 			if ((i = e.target.id)) {
-				props.tips.bartenders[id].tipsCollected = Number(value);
+				props.employees.bartenders[id].tipsCollected = Number(value);
 			}
 		}
 	};
@@ -70,7 +70,7 @@ const CreditCardInputForm = (props) => {
 							<Label sm={4}>{bartender}</Label>
 							<Col sm={8}>
 								<Input
-									id={props.tips.bartenders.findIndex(
+									id={props.employees.bartenders.findIndex(
 										(index) => index.value === bartender
 									)}
 									name="bar1TipTotal"
@@ -123,7 +123,7 @@ const CreditCardInputForm = (props) => {
 
 								<Col sm={3}>
 									<Input
-										id={props.tips.bartenders.findIndex(
+										id={props.employees.bartenders.findIndex(
 											(index) => index.value === bartender
 										)}
 										type="number"
@@ -133,7 +133,7 @@ const CreditCardInputForm = (props) => {
 								</Col>
 								<Col sm={4}>
 									<Input
-										id={props.tips.bartenders.findIndex(
+										id={props.employees.bartenders.findIndex(
 											(index) => index.value === bartender
 										)}
 										name="bar1TipTotal"

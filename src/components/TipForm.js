@@ -19,13 +19,15 @@ const TipsForm = (props) => {
 		setTotalTipsCollected(0);
 	};
 
-	const bartendersInfo = props.tips.bartenders.filter((bartender) => {
+	const bartendersInfo = props.employees.bartenders.filter((bartender) => {
 		return bartender.tipsCollected >= 0;
 	});
 
-	const bartenderHours = props.tips.bartenders.filter((bartender) => {
+	const bartenderHours = props.employees.bartenders.filter((bartender) => {
 		return bartender.hoursWorked >= 0;
 	});
+
+	console.log(bartendersInfo, bartenderHours);
 
 	const submitHandler = (e) => {
 		e.preventDefault();
@@ -64,7 +66,7 @@ const TipsForm = (props) => {
 					<Form>
 						<FormGroup className="row-content card-container">
 							<Cook
-								tips={props.tips}
+								employees={props.employees}
 								workingCook={props.workingCook}
 								newWorkingCook={props.newWorkingCook}
 								removeWorkingCook={props.removeWorkingCook}
@@ -72,7 +74,7 @@ const TipsForm = (props) => {
 								workingBarBack={props.workingBarBack}
 							/>
 							<BarBack
-								tips={props.tips}
+								employees={props.employees}
 								workingBarBack={props.workingBarBack}
 								newWorkingBarBack={props.newWorkingBarBack}
 								removeWorkingBarBack={props.removeWorkingBarBack}
@@ -81,7 +83,7 @@ const TipsForm = (props) => {
 							/>
 
 							<Bartender
-								tips={props.tips}
+								employees={props.employees}
 								workingBarBack={props.workingBarBack}
 								newWorkingBartender={props.newWorkingBartender}
 								removeWorkingBartender={props.removeWorkingBartender}
@@ -104,7 +106,7 @@ const TipsForm = (props) => {
 					<Card body className="card-container">
 						<Form className="row-content">
 							<CreditCardInputForm
-								tips={props.tips}
+								employees={props.employees}
 								addFoodSales={props.addFoodSales}
 								workingBartender={props.workingBartender}
 								isBartenderHoursClicked={props.isBartenderHoursClicked}

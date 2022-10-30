@@ -26,7 +26,7 @@ const Cook = (props) => {
 		props.removeWorkingCook(inputVal);
 	};
 
-	const cooks = props.tips.cooks
+	const cooks = props.employees.cooks
 		.filter((bartender) => !props.workingBartender.includes(bartender.value))
 		.filter((barBack) => !props.workingBarBack.includes(barBack.value))
 		.filter((cook) => !props.workingCook.includes(cook.value))

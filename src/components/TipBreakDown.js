@@ -12,12 +12,9 @@ const TipBreakDown = (props) => {
 		window.location.reload();
 	};
 
-	console.log(props.workingBartenderHoursList[0]);
 	const bartenderHoursList = props.workingBartenderHoursList[0].filter(
 		(hours) => hours > 0
 	);
-
-	console.log(bartenderHoursList);
 
 	const cooksTips =
 		props.numberOfCooks === 0
@@ -58,6 +55,15 @@ const TipBreakDown = (props) => {
 		props.isSubmitedHandler(false);
 	};
 
+	const workingBartenderList = props.workingBartenderList;
+	console.log(props.employees.bartenders);
+	let test = props.workingBartenders.map(function (bartender, i) {
+		if ((props.employees.bartenders.value = bartender))
+			return props.employees.bartenders.value;
+	});
+	console.log(test);
+	console.log(props.employees.bartenders);
+
 	return (
 		<div className="bg1 height100">
 			<Card className="row-content card-container">
@@ -82,17 +88,38 @@ const TipBreakDown = (props) => {
 						</FormGroup>
 					))}
 				</div>
-				<div>
-					<h3>Bartender Tips</h3>
-					{props.workingBartenders.map((bartender, i) => (
-						<FormGroup row key={i}>
-							<Label sm={4}>{bartender}</Label>
-							<Col sm={8}>
-								{(tipsPerHour * bartenderHoursList[i]).toFixed(2)}
-							</Col>
-						</FormGroup>
-					))}
-				</div>
+				{props.isBartenderHoursClicked === true ? (
+					<div>
+						<h3>Bartender Tips</h3>
+						{props.workingBartenders.map((bartender, i) => (
+							<FormGroup row key={i}>
+								<Label sm={4}>{bartender}</Label>
+								{
+									(props.employees.bartenders.value = bartender ? (
+										<Col sm={8}>
+											{(
+												tipsPerHour * props.employees.bartenders.hoursWorked
+											).toFixed(2)}
+										</Col>
+									) : null)
+								}
+								{/* <Col sm={8}>
+									{(tipsPerHour * bartenderHoursList[i]).toFixed(2)}
+								</Col> */}
+							</FormGroup>
+						))}
+					</div>
+				) : (
+					<div>
+						<h3>Bartender Tips</h3>
+						{props.workingBartenders.map((bartender, i) => (
+							<FormGroup row key={i}>
+								<Label sm={4}>{bartender}</Label>
+								<Col sm={8}>{tipsPerHour}</Col>
+							</FormGroup>
+						))}
+					</div>
+				)}
 				<Button
 					onClick={backBtnHandler}
 					className="button-block bg2"

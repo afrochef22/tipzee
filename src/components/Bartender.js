@@ -20,7 +20,7 @@ const Bartender = (props) => {
 			}
 		}
 	};
-	const bartenders = props.tips.bartenders
+	const bartenders = props.employees.bartenders
 		.filter((cook) => !props.workingCook.includes(cook.value))
 		.filter((barBack) => !props.workingBarBack.includes(barBack.value))
 		.filter((bartender) => !props.workingBartender.includes(bartender.value))
